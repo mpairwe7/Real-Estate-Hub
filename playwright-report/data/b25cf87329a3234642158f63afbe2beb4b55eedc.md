@@ -1,0 +1,42 @@
+# Page snapshot
+
+```yaml
+- generic:
+  - generic:
+    - generic:
+      - button [expanded]:
+        - img
+        - generic: English
+    - generic:
+      - generic:
+        - generic:
+          - img
+          - generic: EstateHub
+        - generic:
+          - generic:
+            - generic: Welcome Back
+            - generic: Sign in to manage your properties and maintenance
+          - generic:
+            - generic:
+              - generic:
+                - generic:
+                  - generic: Email
+                  - textbox:
+                    - /placeholder: your@email.com
+                - generic:
+                  - generic: Password
+                  - textbox
+                - button: Sign In
+              - generic:
+                - text: Don't have an account?
+                - link:
+                  - /url: /auth/sign-up
+                  - text: Sign Up
+  - button [ref=e6] [cursor=pointer]:
+    - img [ref=e7]
+  - alert
+  - menu "English" [active] [ref=e10]:
+    - menuitem "English" [ref=e11]
+    - menuitem "Deutsch" [ref=e12]
+    - menuitem "Français" [ref=e13]
+```

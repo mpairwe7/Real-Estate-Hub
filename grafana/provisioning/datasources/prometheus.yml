@@ -1,15 +1,25 @@
 # Grafana Datasource Configuration
-# Automatically configure Prometheus as a datasource
+# Configure JSON API datasource for Next.js metrics
 
 apiVersion: 1
 
 datasources:
-  - name: Prometheus
-    type: prometheus
+  # JSON API Datasource - Direct connection to Next.js metrics endpoint
+  - name: Real Estate Hub API
+    type: simplejson
     access: proxy
-    url: http://prometheus:9090
+    url: https://real-estate-nwp6a86sm-mpairwe-laubens-projects.vercel.app
     isDefault: true
     editable: true
     jsonData:
-      httpMethod: POST
-      timeInterval: 15s
+      httpMethod: GET
+      keepCookies: []
+      timeout: 60
+    version: 1
+    
+  # TestData DB for demo and testing
+  - name: TestData DB
+    type: testdata
+    access: proxy
+    editable: true
+    version: 1

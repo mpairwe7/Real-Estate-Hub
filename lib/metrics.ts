@@ -103,6 +103,112 @@ class PrometheusMetrics {
     return output;
   }
 
+  /**
+   * Export metrics in JSON format for Grafana
+   */
+  exportJSON() {
+    const timestamp = Date.now();
+    
+    // Collect all metrics
+    const metricsData = {
+      timestamp,
+      counters: this.getCountersJSON(),
+      gauges: this.getGaugesJSON(),
+      histograms: this.getHistogramsJSON(),
+      system: this.getSystemMetrics(),
+    };
+
+    return metricsData;
+  }
+
+  private getCountersJSON() {
+    const counters: Record<string, any> = {};
+    this.counters.forEach((value, key) => {
+      const { name, labels } = this.parseMetricKey(key);
+      if (!counters[name]) counters[name] = [];
+      counters[name].push({ value, labels });
+    });
+    return counters;
+  }
+
+  private getGaugesJSON() {
+    const gauges: Record<string, any> = {};
+    this.gauges.forEach((value, key) => {
+      const { name, labels } = this.parseMetricKey(key);
+      if (!gauges[name]) gauges[name] = [];
+      gauges[name].push({ value, labels });
+    });
+    return gauges;
+  }
+
+  private getHistogramsJSON() {
+    const histograms: Record<string, any> = {};
+    this.histograms.forEach((values, key) => {
+      const { name, labels } = this.parseMetricKey(key);
+      const sum = values.reduce((a, b) => a + b, 0);
+      const count = values.length;
+      const avg = count > 0 ? sum / count : 0;
+      const min = count > 0 ? Math.min(...values) : 0;
+      const max = count > 0 ? Math.max(...values) : 0;
+      
+      if (!histograms[name]) histograms[name] = [];
+      histograms[name].push({
+        sum,
+        count,
+        avg,
+        min,
+        max,
+        labels,
+      });
+    });
+    return histograms;
+  }
+
+  private getSystemMetrics() {
+    const systemMetrics: any = {
+      memory: {},
+      uptime: 0,
+    };
+
+    if (typeof process !== 'undefined') {
+      if (process.memoryUsage) {
+        const mem = process.memoryUsage();
+        systemMetrics.memory = {
+          rss: mem.rss,
+          heapTotal: mem.heapTotal,
+          heapUsed: mem.heapUsed,
+          external: mem.external,
+          heapUsedPercent: (mem.heapUsed / mem.heapTotal) * 100,
+        };
+      }
+      if (process.uptime) {
+        systemMetrics.uptime = process.uptime();
+      }
+    }
+
+    return systemMetrics;
+  }
+
+  private parseMetricKey(key: string): { name: string; labels: Record<string, string> } {
+    const match = key.match(/^([^{]+)(?:\{(.+)\})?$/);
+    if (!match) return { name: key, labels: {} };
+
+    const name = match[1];
+    const labelsStr = match[2];
+    const labels: Record<string, string> = {};
+
+    if (labelsStr) {
+      labelsStr.split(',').forEach(label => {
+        const [k, v] = label.split('=');
+        if (k && v) {
+          labels[k.trim()] = v.replace(/"/g, '').trim();
+        }
+      });
+    }
+
+    return { name, labels };
+  }
+
   private getMetricKey(name: string, labels?: Record<string, string>): string {
     if (!labels) return name;
     const labelStr = Object.entries(labels)

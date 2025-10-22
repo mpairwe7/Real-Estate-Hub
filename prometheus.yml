@@ -34,7 +34,7 @@ scrape_configs:
     scheme: 'https'
     static_configs:
       - targets:
-          - 'real-estate-hub.vercel.app' # Replace with your actual Vercel domain
+          - 'real-estate-nwp6a86sm-mpairwe-laubens-projects.vercel.app'
         labels:
           application: 'real-estate-hub'
           environment: 'production'
@@ -46,7 +46,7 @@ scrape_configs:
     scheme: 'https'
     static_configs:
       - targets:
-          - 'real-estate-hub.vercel.app'
+          - 'real-estate-nwp6a86sm-mpairwe-laubens-projects.vercel.app'
         labels:
           service: 'nextjs-server'
           

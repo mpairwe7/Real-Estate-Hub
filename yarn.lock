@@ -2026,6 +2026,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@playwright/test@npm:^1.56.1":
+  version: 1.56.1
+  resolution: "@playwright/test@npm:1.56.1"
+  dependencies:
+    playwright: "npm:1.56.1"
+  bin:
+    playwright: cli.js
+  checksum: 10c0/2b5b0e1f2e6a18f6e5ce6897c7440ca78f64e0b004834e9808e93ad2b78b96366b562ae4366602669cf8ad793a43d85481b58541e74be71e905e732d833dd691
+  languageName: node
+  linkType: hard
+
 "@protobufjs/aspromise@npm:^1.1.1, @protobufjs/aspromise@npm:^1.1.2":
   version: 1.1.2
   resolution: "@protobufjs/aspromise@npm:1.1.2"
@@ -6487,12 +6498,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fsevents@npm:2.3.2":
+  version: 2.3.2
+  resolution: "fsevents@npm:2.3.2"
+  dependencies:
+    node-gyp: "npm:latest"
+  checksum: 10c0/be78a3efa3e181cda3cf7a4637cb527bcebb0bd0ea0440105a3bb45b86f9245b307dc10a2507e8f4498a7d4ec349d1910f4d73e4d4495b16103106e07eee735b
+  conditions: os=darwin
+  languageName: node
+  linkType: hard
+
 "fsevents@npm:^2.3.3":
   version: 2.3.3
   resolution: "fsevents@npm:2.3.3"
   dependencies:
     node-gyp: "npm:latest"
   checksum: 10c0/a1f0c44595123ed717febbc478aa952e47adfc28e2092be66b8ab1635147254ca6cfe1df792a8997f22716d4cbafc73309899ff7bfac2ac3ad8cf2e4ecc3ec60
+  conditions: os=darwin
+  languageName: node
+  linkType: hard
+
+"fsevents@patch:fsevents@npm%3A2.3.2#optional!builtin<compat/fsevents>":
+  version: 2.3.2
+  resolution: "fsevents@patch:fsevents@npm%3A2.3.2#optional!builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
+  dependencies:
+    node-gyp: "npm:latest"
   conditions: os=darwin
   languageName: node
   linkType: hard
@@ -8443,90 +8473,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"my-v0-project@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "my-v0-project@workspace:."
-  dependencies:
-    "@googlemaps/js-api-loader": "npm:^2.0.1"
-    "@hookform/resolvers": "npm:^3.10.0"
-    "@radix-ui/react-accordion": "npm:1.2.2"
-    "@radix-ui/react-alert-dialog": "npm:1.1.4"
-    "@radix-ui/react-aspect-ratio": "npm:1.1.1"
-    "@radix-ui/react-avatar": "npm:1.1.2"
-    "@radix-ui/react-checkbox": "npm:1.1.3"
-    "@radix-ui/react-collapsible": "npm:1.1.2"
-    "@radix-ui/react-context-menu": "npm:2.2.4"
-    "@radix-ui/react-dialog": "npm:1.1.4"
-    "@radix-ui/react-dropdown-menu": "npm:2.1.4"
-    "@radix-ui/react-hover-card": "npm:1.1.4"
-    "@radix-ui/react-label": "npm:2.1.1"
-    "@radix-ui/react-menubar": "npm:1.1.4"
-    "@radix-ui/react-navigation-menu": "npm:1.2.3"
-    "@radix-ui/react-popover": "npm:1.1.4"
-    "@radix-ui/react-progress": "npm:1.1.1"
-    "@radix-ui/react-radio-group": "npm:1.2.2"
-    "@radix-ui/react-scroll-area": "npm:1.2.2"
-    "@radix-ui/react-select": "npm:2.1.4"
-    "@radix-ui/react-separator": "npm:1.1.1"
-    "@radix-ui/react-slider": "npm:1.2.2"
-    "@radix-ui/react-slot": "npm:1.1.1"
-    "@radix-ui/react-switch": "npm:1.1.2"
-    "@radix-ui/react-tabs": "npm:1.1.2"
-    "@radix-ui/react-toast": "npm:^1.2.15"
-    "@radix-ui/react-toggle": "npm:1.1.1"
-    "@radix-ui/react-toggle-group": "npm:1.1.1"
-    "@radix-ui/react-tooltip": "npm:1.1.6"
-    "@supabase/ssr": "npm:latest"
-    "@supabase/supabase-js": "npm:latest"
-    "@tailwindcss/postcss": "npm:^4.1.9"
-    "@testing-library/dom": "npm:^10.4.1"
-    "@testing-library/jest-dom": "npm:^6.9.1"
-    "@testing-library/react": "npm:^16.3.0"
-    "@testing-library/user-event": "npm:^14.6.1"
-    "@types/jest": "npm:^30.0.0"
-    "@types/leaflet": "npm:^1.9.12"
-    "@types/node": "npm:^22"
-    "@types/react": "npm:^19"
-    "@types/react-dom": "npm:^19"
-    "@vercel/analytics": "npm:latest"
-    autoprefixer: "npm:^10.4.20"
-    class-variance-authority: "npm:^0.7.1"
-    clsx: "npm:^2.1.1"
-    cmdk: "npm:1.0.4"
-    date-fns: "npm:4.1.0"
-    embla-carousel-react: "npm:8.5.1"
-    eslint: "npm:^9"
-    eslint-config-next: "npm:16.0.0"
-    firebase: "npm:^12.4.0"
-    geist: "npm:^1.3.1"
-    input-otp: "npm:1.4.1"
-    jest: "npm:^30.2.0"
-    jest-environment-jsdom: "npm:^30.2.0"
-    leaflet: "npm:^1.9.4"
-    lucide-react: "npm:^0.454.0"
-    next: "npm:15.2.4"
-    next-intl: "npm:latest"
-    next-themes: "npm:^0.4.6"
-    postcss: "npm:^8.5"
-    prettier: "npm:^3.6.2"
-    react: "npm:^19"
-    react-day-picker: "npm:9.8.0"
-    react-dom: "npm:^19"
-    react-hook-form: "npm:^7.60.0"
-    react-resizable-panels: "npm:^2.1.7"
-    recharts: "npm:2.15.4"
-    sonner: "npm:^1.7.4"
-    tailwind-merge: "npm:^2.5.5"
-    tailwindcss: "npm:^4.1.9"
-    tailwindcss-animate: "npm:^1.0.7"
-    ts-node: "npm:^10.9.2"
-    tw-animate-css: "npm:1.3.3"
-    typescript: "npm:^5"
-    vaul: "npm:^0.9.9"
-    zod: "npm:3.25.76"
-  languageName: unknown
-  linkType: soft
-
 "nanoid@npm:^3.3.11, nanoid@npm:^3.3.6":
   version: 3.3.11
   resolution: "nanoid@npm:3.3.11"
@@ -9010,6 +8956,30 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright-core@npm:1.56.1":
+  version: 1.56.1
+  resolution: "playwright-core@npm:1.56.1"
+  bin:
+    playwright-core: cli.js
+  checksum: 10c0/ffd40142b99c68678b387445d5b42f1fee4ab0b65d983058c37f342e5629f9cdbdac0506ea80a0dfd41a8f9f13345bad54e9a8c35826ef66dc765f4eb3db8da7
+  languageName: node
+  linkType: hard
+
+"playwright@npm:1.56.1":
+  version: 1.56.1
+  resolution: "playwright@npm:1.56.1"
+  dependencies:
+    fsevents: "npm:2.3.2"
+    playwright-core: "npm:1.56.1"
+  dependenciesMeta:
+    fsevents:
+      optional: true
+  bin:
+    playwright: cli.js
+  checksum: 10c0/8e9965aede86df0f4722063385748498977b219630a40a10d1b82b8bd8d4d4e9b6b65ecbfa024331a30800163161aca292fb6dd7446c531a1ad25f4155625ab4
+  languageName: node
+  linkType: hard
+
 "possible-typed-array-names@npm:^1.0.0":
   version: 1.1.0
   resolution: "possible-typed-array-names@npm:1.1.0"
@@ -9303,6 +9273,91 @@ __metadata:
   checksum: 10c0/1b6d64eacb9324725bfe1e7860cb7a6b8a34bc89a482920765ebff5c10578eb487e6b46b2f0df263bd27a25edbdae2c45e5ea5d81ae61404301c1a7192c38330
   languageName: node
   linkType: hard
+
+"real-estate-hub@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "real-estate-hub@workspace:."
+  dependencies:
+    "@googlemaps/js-api-loader": "npm:^2.0.1"
+    "@hookform/resolvers": "npm:^3.10.0"
+    "@playwright/test": "npm:^1.56.1"
+    "@radix-ui/react-accordion": "npm:1.2.2"
+    "@radix-ui/react-alert-dialog": "npm:1.1.4"
+    "@radix-ui/react-aspect-ratio": "npm:1.1.1"
+    "@radix-ui/react-avatar": "npm:1.1.2"
+    "@radix-ui/react-checkbox": "npm:1.1.3"
+    "@radix-ui/react-collapsible": "npm:1.1.2"
+    "@radix-ui/react-context-menu": "npm:2.2.4"
+    "@radix-ui/react-dialog": "npm:1.1.4"
+    "@radix-ui/react-dropdown-menu": "npm:2.1.4"
+    "@radix-ui/react-hover-card": "npm:1.1.4"
+    "@radix-ui/react-label": "npm:2.1.1"
+    "@radix-ui/react-menubar": "npm:1.1.4"
+    "@radix-ui/react-navigation-menu": "npm:1.2.3"
+    "@radix-ui/react-popover": "npm:1.1.4"
+    "@radix-ui/react-progress": "npm:1.1.1"
+    "@radix-ui/react-radio-group": "npm:1.2.2"
+    "@radix-ui/react-scroll-area": "npm:1.2.2"
+    "@radix-ui/react-select": "npm:2.1.4"
+    "@radix-ui/react-separator": "npm:1.1.1"
+    "@radix-ui/react-slider": "npm:1.2.2"
+    "@radix-ui/react-slot": "npm:1.1.1"
+    "@radix-ui/react-switch": "npm:1.1.2"
+    "@radix-ui/react-tabs": "npm:1.1.2"
+    "@radix-ui/react-toast": "npm:^1.2.15"
+    "@radix-ui/react-toggle": "npm:1.1.1"
+    "@radix-ui/react-toggle-group": "npm:1.1.1"
+    "@radix-ui/react-tooltip": "npm:1.1.6"
+    "@supabase/ssr": "npm:latest"
+    "@supabase/supabase-js": "npm:latest"
+    "@tailwindcss/postcss": "npm:^4.1.9"
+    "@testing-library/dom": "npm:^10.4.1"
+    "@testing-library/jest-dom": "npm:^6.9.1"
+    "@testing-library/react": "npm:^16.3.0"
+    "@testing-library/user-event": "npm:^14.6.1"
+    "@types/jest": "npm:^30.0.0"
+    "@types/leaflet": "npm:^1.9.12"
+    "@types/node": "npm:^22"
+    "@types/react": "npm:^19"
+    "@types/react-dom": "npm:^19"
+    "@vercel/analytics": "npm:latest"
+    autoprefixer: "npm:^10.4.20"
+    class-variance-authority: "npm:^0.7.1"
+    clsx: "npm:^2.1.1"
+    cmdk: "npm:1.0.4"
+    date-fns: "npm:4.1.0"
+    embla-carousel-react: "npm:8.5.1"
+    eslint: "npm:^9"
+    eslint-config-next: "npm:16.0.0"
+    firebase: "npm:^12.4.0"
+    geist: "npm:^1.3.1"
+    input-otp: "npm:1.4.1"
+    jest: "npm:^30.2.0"
+    jest-environment-jsdom: "npm:^30.2.0"
+    leaflet: "npm:^1.9.4"
+    lucide-react: "npm:^0.454.0"
+    next: "npm:15.2.4"
+    next-intl: "npm:latest"
+    next-themes: "npm:^0.4.6"
+    postcss: "npm:^8.5"
+    prettier: "npm:^3.6.2"
+    react: "npm:^19"
+    react-day-picker: "npm:9.8.0"
+    react-dom: "npm:^19"
+    react-hook-form: "npm:^7.60.0"
+    react-resizable-panels: "npm:^2.1.7"
+    recharts: "npm:2.15.4"
+    sonner: "npm:^1.7.4"
+    tailwind-merge: "npm:^2.5.5"
+    tailwindcss: "npm:^4.1.9"
+    tailwindcss-animate: "npm:^1.0.7"
+    ts-node: "npm:^10.9.2"
+    tw-animate-css: "npm:1.3.3"
+    typescript: "npm:^5"
+    vaul: "npm:^0.9.9"
+    zod: "npm:3.25.76"
+  languageName: unknown
+  linkType: soft
 
 "recharts-scale@npm:^0.4.4":
   version: 0.4.5

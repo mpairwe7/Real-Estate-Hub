@@ -13,7 +13,7 @@ import { Building2, Bed, Bath, Maximize, MapPin, ArrowLeft, Edit, Trash2 } from 
 import Link from "next/link"
 import { useTranslations } from "next-intl"
 
-export default function PropertyDetailPage({ params }: { params: { id: string } }) {
+export default function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const t = useTranslations("properties")
   const router = useRouter()
   const supabase = createClient()
@@ -22,9 +22,13 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
   const [isLoading, setIsLoading] = useState(true)
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
+  const [propertyId, setPropertyId] = useState<string>("")
 
   useEffect(() => {
     async function fetchProperty() {
+      const resolvedParams = await params
+      setPropertyId(resolvedParams.id)
+
       const {
         data: { user },
       } = await supabase.auth.getUser()
@@ -36,7 +40,7 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
       const { data, error } = await supabase
         .from("properties")
         .select("*")
-        .eq("id", params.id)
+        .eq("id", resolvedParams.id)
         .eq("owner_id", user.id)
         .single()
 
@@ -55,13 +59,13 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
     }
 
     fetchProperty()
-  }, [params.id])
+  }, [])
 
   const handleDelete = async () => {
     setIsDeleting(true)
 
     try {
-      const { error } = await supabase.from("properties").delete().eq("id", params.id)
+      const { error } = await supabase.from("properties").delete().eq("id", propertyId)
 
       if (error) throw error
 
@@ -111,7 +115,7 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
             </Button>
           </Link>
           <div className="flex gap-2">
-            <Link href={`/properties/${params.id}/edit`}>
+            <Link href={`/properties/${propertyId}/edit`}>
               <Button variant="outline" size="sm" className="gap-2 bg-transparent">
                 <Edit className="h-4 w-4" />
                 {t("edit")}
@@ -248,7 +252,7 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
                       : t(`listingTypes.${property.listing_type}`)}
                   </p>
                 </div>
-                <Link href={`/browse/${params.id}`}>
+                <Link href={`/browse/${propertyId}`}>
                   <Button className="w-full">{t("viewPublicListing")}</Button>
                 </Link>
               </CardContent>

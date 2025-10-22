@@ -4,15 +4,28 @@
 apiVersion: 1
 
 datasources:
-  # JSON API Datasource - Direct connection to Next.js metrics endpoint
-  - name: Real Estate Hub API
+  # JSON API Datasource - Local Next.js application
+  - name: Real Estate Hub (Local)
     type: simplejson
     access: proxy
-    url: https://real-estate-nwp6a86sm-mpairwe-laubens-projects.vercel.app
+    url: http://host.containers.internal:3000/api/grafana
     isDefault: true
     editable: true
     jsonData:
-      httpMethod: GET
+      httpMethod: POST
+      keepCookies: []
+      timeout: 60
+    version: 1
+  
+  # JSON API Datasource - Production deployment
+  - name: Real Estate Hub (Production)
+    type: simplejson
+    access: proxy
+    url: https://real-estate-nwp6a86sm-mpairwe-laubens-projects.vercel.app/api/grafana
+    isDefault: false
+    editable: true
+    jsonData:
+      httpMethod: POST
       keepCookies: []
       timeout: 60
     version: 1

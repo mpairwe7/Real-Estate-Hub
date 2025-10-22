@@ -1,0 +1,45 @@
+# Grafana PostgreSQL Datasource Configuration
+# Connects to Supabase PostgreSQL for real-time data monitoring
+
+apiVersion: 1
+
+datasources:
+  # PostgreSQL - Supabase Real-time Database
+  - name: Real Estate Database (PostgreSQL)
+    type: postgres
+    access: proxy
+    url: db.icvlkfwzppohmvfmfxwr.supabase.co:5432
+    database: postgres
+    user: postgres
+    isDefault: true
+    editable: true
+    jsonData:
+      sslmode: require
+      postgresVersion: 1500  # PostgreSQL 15
+      timescaledb: false
+      maxOpenConns: 10
+      maxIdleConns: 5
+      connMaxLifetime: 14400
+    secureJsonData:
+      password: 2J7n5zcPxw7DbaFc
+    version: 1
+
+  # JSON API Datasource - For metrics endpoint
+  - name: Real Estate Hub API
+    type: simplejson
+    access: proxy
+    url: https://real-estate-nwp6a86sm-mpairwe-laubens-projects.vercel.app
+    isDefault: false
+    editable: true
+    jsonData:
+      httpMethod: GET
+      keepCookies: []
+      timeout: 60
+    version: 1
+    
+  # TestData DB for demo and testing
+  - name: TestData DB
+    type: testdata
+    access: proxy
+    editable: true
+    version: 1

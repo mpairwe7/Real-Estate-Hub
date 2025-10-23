@@ -24,6 +24,11 @@ interface SentryStats {
 
 export async function GET(request: NextRequest) {
   try {
+    console.log("[Sentry API] Token exists:", !!SENTRY_AUTH_TOKEN)
+    console.log("[Sentry API] Token length:", SENTRY_AUTH_TOKEN?.length || 0)
+    console.log("[Sentry API] Org:", SENTRY_ORG)
+    console.log("[Sentry API] Project:", SENTRY_PROJECT)
+    
     if (!SENTRY_AUTH_TOKEN) {
       console.warn("Sentry auth token not configured, returning mock data")
       return NextResponse.json({
@@ -52,7 +57,8 @@ export async function GET(request: NextRequest) {
       // If 403, the token might not have the right scopes
       // Return mock data instead of failing
       if (issuesResponse.status === 403) {
-        console.warn("Sentry API returned 403 - insufficient permissions. Using mock data.")
+        console.error("[Sentry API] 403 Error - Token has insufficient permissions")
+        console.error("[Sentry API] Response:", await issuesResponse.text())
         console.warn("To fix: Generate a new auth token with 'project:read' and 'org:read' scopes at:")
         console.warn("https://sentry.io/settings/account/api/auth-tokens/")
         
@@ -63,6 +69,8 @@ export async function GET(request: NextRequest) {
           warning: "Using mock data - Sentry API token needs 'project:read' and 'org:read' scopes",
         })
       }
+      
+      console.log("[Sentry API] Response status:", issuesResponse.status)
 
       if (!issuesResponse.ok) {
         throw new Error(`Sentry API error: ${issuesResponse.status}`)

@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import Image from "next/image"
 import {
   Select,
   SelectContent,
@@ -26,8 +27,19 @@ export default async function BrowsePage({
   const params = await searchParams
   const supabase = await createClient()
 
-  // Build query
-  let query = supabase.from("properties").select("*").eq("status", "available")
+  // Build query with images
+  let query = supabase
+    .from("properties")
+    .select(`
+      *,
+      property_images (
+        id,
+        image_url,
+        is_primary,
+        display_order
+      )
+    `)
+    .eq("status", "available")
 
   if (params.type) {
     query = query.eq("property_type", params.type)
@@ -130,16 +142,34 @@ export default async function BrowsePage({
                 <p className="text-sm text-muted-foreground">
                   {t("resultsCount", { count: properties.length })}
                 </p>
-                {properties.map((property) => (
-                  <Card
-                    key={property.id}
-                    className="overflow-hidden hover:border-primary/50 transition-colors"
-                  >
-                    <div className="flex flex-col sm:flex-row">
-                      <div className="sm:w-48 aspect-video sm:aspect-square bg-muted flex items-center justify-center flex-shrink-0">
-                        <Building2 className="h-12 w-12 text-muted-foreground" />
-                      </div>
-                      <div className="flex-1 p-4">
+                {properties.map((property) => {
+                  // Get primary image or first image
+                  const primaryImage = property.property_images?.find((img: any) => img.is_primary)
+                  const firstImage = property.property_images?.[0]
+                  const displayImage = primaryImage || firstImage
+
+                  return (
+                    <Card
+                      key={property.id}
+                      className="overflow-hidden hover:border-primary/50 transition-colors"
+                    >
+                      <div className="flex flex-col sm:flex-row">
+                        <div className="sm:w-48 aspect-video sm:aspect-square bg-muted relative overflow-hidden flex-shrink-0">
+                          {displayImage ? (
+                            <Image
+                              src={displayImage.image_url}
+                              alt={property.title}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 640px) 100vw, 192px"
+                            />
+                          ) : (
+                            <div className="flex items-center justify-center h-full">
+                              <Building2 className="h-12 w-12 text-muted-foreground" />
+                            </div>
+                          )}
+                        </div>
+                        <div className="flex-1 p-4">
                         <div className="flex items-start justify-between gap-2 mb-2">
                           <div className="flex-1">
                             <h3 className="font-serif font-bold text-lg line-clamp-1">
@@ -200,7 +230,8 @@ export default async function BrowsePage({
                       </div>
                     </div>
                   </Card>
-                ))}
+                )
+                })}
               </>
             )}
           </div>

@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import Image from "next/image"
 import { Building2, Bed, Bath, Maximize, MapPin, Plus } from "lucide-react"
 import { getTranslations } from "next-intl/server"
 
@@ -19,10 +20,18 @@ export default async function PropertiesPage() {
     redirect("/auth/login")
   }
 
-  // Fetch user's properties
+  // Fetch user's properties with images
   const { data: properties, error } = await supabase
     .from("properties")
-    .select("*")
+    .select(`
+      *,
+      property_images (
+        id,
+        image_url,
+        is_primary,
+        display_order
+      )
+    `)
     .eq("owner_id", user.id)
     .order("created_at", { ascending: false })
 
@@ -67,15 +76,33 @@ export default async function PropertiesPage() {
           </Card>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {properties.map((property) => (
-              <Card
-                key={property.id}
-                className="overflow-hidden hover:border-primary/50 transition-colors"
-              >
-                <div className="aspect-video bg-muted flex items-center justify-center">
-                  <Building2 className="h-12 w-12 text-muted-foreground" />
-                </div>
-                <CardHeader>
+            {properties.map((property) => {
+              // Get primary image or first image
+              const primaryImage = property.property_images?.find((img: any) => img.is_primary)
+              const firstImage = property.property_images?.[0]
+              const displayImage = primaryImage || firstImage
+
+              return (
+                <Card
+                  key={property.id}
+                  className="overflow-hidden hover:border-primary/50 transition-colors"
+                >
+                  <div className="aspect-video bg-muted relative overflow-hidden">
+                    {displayImage ? (
+                      <Image
+                        src={displayImage.image_url}
+                        alt={property.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      />
+                    ) : (
+                      <div className="flex items-center justify-center h-full">
+                        <Building2 className="h-12 w-12 text-muted-foreground" />
+                      </div>
+                    )}
+                  </div>
+                  <CardHeader>
                   <div className="flex items-start justify-between gap-2 mb-2">
                     <CardTitle className="text-xl font-serif line-clamp-1">
                       {property.title}
@@ -134,7 +161,8 @@ export default async function PropertiesPage() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
+            )
+            })}
           </div>
         )}
       </div>

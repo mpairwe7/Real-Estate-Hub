@@ -43,9 +43,9 @@ export async function GET(request: NextRequest) {
 
     // Try to fetch real data from Sentry
     try {
-      // Fetch recent issues with simpler endpoint
-      const issuesResponse = await fetch(
-        `https://sentry.io/api/0/projects/${SENTRY_ORG}/${SENTRY_PROJECT}/issues/?statsPeriod=${timeRange}&limit=10`,
+      // Fetch recent events (issues endpoint requires additional permissions)
+      const eventsResponse = await fetch(
+        `https://sentry.io/api/0/projects/${SENTRY_ORG}/${SENTRY_PROJECT}/events/`,
         {
           headers: {
             Authorization: `Bearer ${SENTRY_AUTH_TOKEN}`,
@@ -56,9 +56,9 @@ export async function GET(request: NextRequest) {
 
       // If 403, the token might not have the right scopes
       // Return mock data instead of failing
-      if (issuesResponse.status === 403) {
+      if (eventsResponse.status === 403) {
         console.error("[Sentry API] 403 Error - Token has insufficient permissions")
-        console.error("[Sentry API] Response:", await issuesResponse.text())
+        console.error("[Sentry API] Response:", await eventsResponse.text())
         console.warn("To fix: Generate a new auth token with 'project:read' and 'org:read' scopes at:")
         console.warn("https://sentry.io/settings/account/api/auth-tokens/")
         
@@ -70,13 +70,38 @@ export async function GET(request: NextRequest) {
         })
       }
       
-      console.log("[Sentry API] Response status:", issuesResponse.status)
+      console.log("[Sentry API] Response status:", eventsResponse.status)
 
-      if (!issuesResponse.ok) {
-        throw new Error(`Sentry API error: ${issuesResponse.status}`)
+      if (!eventsResponse.ok) {
+        throw new Error(`Sentry API error: ${eventsResponse.status}`)
       }
 
-      const issues: SentryIssue[] = await issuesResponse.json()
+      const events: any[] = await eventsResponse.json()
+      
+      // Convert events to issue format
+      const issuesMap = new Map()
+      events.forEach(event => {
+        const groupId = event.groupID
+        if (!issuesMap.has(groupId)) {
+          issuesMap.set(groupId, {
+            id: groupId,
+            title: event.title || event.message,
+            culprit: event.culprit,
+            level: event.tags?.find((t: any) => t.key === 'level')?.value || 'error',
+            count: '1',
+            userCount: 1,
+            lastSeen: event.dateCreated,
+            firstSeen: event.dateCreated,
+            status: 'unresolved',
+            permalink: `https://sentry.io/organizations/${SENTRY_ORG}/issues/${groupId}/`
+          })
+        } else {
+          const issue = issuesMap.get(groupId)
+          issue.count = (parseInt(issue.count) + 1).toString()
+        }
+      })
+      
+      const issues: SentryIssue[] = Array.from(issuesMap.values())
 
       // Calculate aggregated metrics
       const totalErrors = issues.reduce((sum, issue) => sum + parseInt(issue.count || "0"), 0)

@@ -6,6 +6,7 @@ import { Building2, Wrench, DollarSign, TrendingUp, Activity } from "lucide-reac
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { getTranslations } from "next-intl/server"
+import { SentryMonitoringWidget } from "@/components/sentry-monitoring-widget"
 
 export default async function DashboardPage() {
   const t = await getTranslations("dashboard")
@@ -158,47 +159,7 @@ export default async function DashboardPage() {
             </CardContent>
           </Card>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-serif flex items-center gap-2">
-                <Activity className="h-5 w-5" />
-                System Monitoring
-              </CardTitle>
-              <CardDescription>View app performance and error tracking</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-sm font-medium">System Status</span>
-                </div>
-                <span className="text-sm text-green-600 font-semibold">Operational</span>
-              </div>
-              
-              <a
-                href="https://sentry.io/organizations/makerere-university-h0/projects/javascript-nextjs/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <Button variant="outline" className="w-full justify-start gap-2 bg-transparent">
-                  <Activity className="h-4 w-4" />
-                  View Monitoring Dashboard
-                </Button>
-              </a>
-
-              <div className="pt-2 space-y-1 text-xs text-muted-foreground">
-                <div className="flex justify-between">
-                  <span>Errors (24h):</span>
-                  <span className="font-medium">Monitor Live</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Performance:</span>
-                  <span className="font-medium">Track Real-time</span>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <SentryMonitoringWidget />
         </div>
       </div>
     </div>

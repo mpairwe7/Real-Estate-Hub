@@ -30,37 +30,29 @@ We follow [Semantic Versioning 2.0.0](https://semver.org/):
 
 ## Creating a New Release
 
-### Method 1: Using Yarn Scripts (Recommended)
-
-#### 1. Patch Release (Bug Fixes)
+#### Method 1: Using Release Scripts (Recommended)
 
 ```bash
-# Bump patch version (e.g., 0.8.0 → 0.8.1)
+# For bug fixes (0.8.0 → 0.8.1)
 yarn release:patch
 
-# Push changes and tag
-git push origin trunk --follow-tags
-```
-
-#### 2. Minor Release (New Features)
-
-```bash
-# Bump minor version (e.g., 0.8.0 → 0.9.0)
+# For new features (0.8.0 → 0.9.0)
 yarn release:minor
 
-# Push changes and tag
-git push origin trunk --follow-tags
-```
-
-#### 3. Major Release (Breaking Changes)
-
-```bash
-# Bump major version (e.g., 0.8.0 → 1.0.0)
+# For breaking changes (0.8.0 → 1.0.0)
 yarn release:major
 
-# Push changes and tag
+# Push the tag to trigger automation
 git push origin trunk --follow-tags
 ```
+
+**What this does (Yarn 4 workflow):**
+1. Marks the version change as deferred (`--deferred`)
+2. Applies the version change to `package.json` (`version:apply`)
+3. Creates a git commit with changed files
+4. Creates a git tag (e.g., `v1.0.0`)
+5. Pushing the tag triggers GitHub Actions
+6. GitHub Actions creates the release and deploys
 
 ### Method 2: Manual Versioning
 

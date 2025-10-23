@@ -1,6 +1,6 @@
 {
   "name": "real-estate-hub",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -22,12 +22,13 @@
     "test:all": "yarn test && yarn test:e2e",
     "ci": "yarn lint && yarn type-check && yarn test:ci && yarn build",
     "prepare": "husky install || true",
-    "version:patch": "yarn version patch --no-git-tag-version",
-    "version:minor": "yarn version minor --no-git-tag-version",
-    "version:major": "yarn version major --no-git-tag-version",
-    "release:patch": "yarn version:patch && git add package.json && git commit -m \"chore: bump version to $(node -p \"require('./package.json').version\")\" && git tag -a v$(node -p \"require('./package.json').version\") -m \"Release v$(node -p \"require('./package.json').version\")\"",
-    "release:minor": "yarn version:minor && git add package.json && git commit -m \"chore: bump version to $(node -p \"require('./package.json').version\")\" && git tag -a v$(node -p \"require('./package.json').version\") -m \"Release v$(node -p \"require('./package.json').version\")\"",
-    "release:major": "yarn version:major && git add package.json && git commit -m \"chore: bump version to $(node -p \"require('./package.json').version\")\" && git tag -a v$(node -p \"require('./package.json').version\") -m \"Release v$(node -p \"require('./package.json').version\")\""
+    "version:patch": "yarn version patch --deferred",
+    "version:minor": "yarn version minor --deferred",
+    "version:major": "yarn version major --deferred",
+    "version:apply": "yarn version apply --all",
+    "release:patch": "yarn version:patch && yarn version:apply && git add package.json .yarn/versions && git commit -m \"chore: bump version to $(node -p \"require('./package.json').version\")\" && git tag -a v$(node -p \"require('./package.json').version\") -m \"Release v$(node -p \"require('./package.json').version\")\"",
+    "release:minor": "yarn version:minor && yarn version:apply && git add package.json .yarn/versions && git commit -m \"chore: bump version to $(node -p \"require('./package.json').version\")\" && git tag -a v$(node -p \"require('./package.json').version\") -m \"Release v$(node -p \"require('./package.json').version\")\"",
+    "release:major": "yarn version:major && yarn version:apply && git add package.json .yarn/versions && git commit -m \"chore: bump version to $(node -p \"require('./package.json').version\")\" && git tag -a v$(node -p \"require('./package.json').version\") -m \"Release v$(node -p \"require('./package.json').version\")\""
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^2.0.1",

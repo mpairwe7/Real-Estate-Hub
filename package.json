@@ -21,7 +21,13 @@
     "test:e2e:report": "playwright show-report",
     "test:all": "yarn test && yarn test:e2e",
     "ci": "yarn lint && yarn type-check && yarn test:ci && yarn build",
-    "prepare": "husky install || true"
+    "prepare": "husky install || true",
+    "version:patch": "yarn version patch --no-git-tag-version",
+    "version:minor": "yarn version minor --no-git-tag-version",
+    "version:major": "yarn version major --no-git-tag-version",
+    "release:patch": "yarn version:patch && git add package.json && git commit -m \"chore: bump version to $(node -p \"require('./package.json').version\")\" && git tag -a v$(node -p \"require('./package.json').version\") -m \"Release v$(node -p \"require('./package.json').version\")\"",
+    "release:minor": "yarn version:minor && git add package.json && git commit -m \"chore: bump version to $(node -p \"require('./package.json').version\")\" && git tag -a v$(node -p \"require('./package.json').version\") -m \"Release v$(node -p \"require('./package.json').version\")\"",
+    "release:major": "yarn version:major && git add package.json && git commit -m \"chore: bump version to $(node -p \"require('./package.json').version\")\" && git tag -a v$(node -p \"require('./package.json').version\") -m \"Release v$(node -p \"require('./package.json').version\")\""
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^2.0.1",

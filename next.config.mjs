@@ -19,6 +19,14 @@ const nextConfig = {
       bodySizeLimit: "2mb",
     },
   },
+  // Suppress webpack cache warnings
+  webpack: (config, { isServer }) => {
+    // Reduce webpack cache warnings
+    config.infrastructureLogging = {
+      level: "error",
+    }
+    return config
+  },
   // Security headers for production
   async headers() {
     return [

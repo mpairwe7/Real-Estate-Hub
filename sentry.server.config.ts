@@ -1,56 +1,19 @@
-/**
- * Sentry Server Configuration
- * Monitors server-side errors and API performance
- */
+// This file configures the initialization of Sentry on the server.
+// The config you add here will be used whenever the server handles a request.
+// https://docs.sentry.io/platforms/javascript/guides/nextjs/
 
-import * as Sentry from '@sentry/nextjs';
+import * as Sentry from "@sentry/nextjs"
 
 Sentry.init({
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  dsn: "https://304828cadc5ef38d4667de820dd5fe57@o4510237463085056.ingest.us.sentry.io/4510237463281664",
 
-  // Performance Monitoring
-  tracesSampleRate: 1.0, // Capture 100% of transactions
+  // Define how likely traces are sampled. Adjust this value in production, or use tracesSampler for greater control.
+  tracesSampleRate: 1,
 
-  // Environment
-  environment: process.env.NODE_ENV || 'development',
+  // Enable logs to be sent to Sentry
+  enableLogs: true,
 
-  // Release tracking
-  release: process.env.VERCEL_GIT_COMMIT_SHA || 'v1.0.0',
-
-  // Enable debugging in development
-  debug: process.env.NODE_ENV === 'development',
-
-  // Server-specific integrations
-  integrations: [
-    // HTTP integration for tracing API calls
-    Sentry.httpIntegration(),
-  ],
-
-  // Error filtering
-  beforeSend(event, hint) {
-    // Filter out certain server errors
-    if (event.exception) {
-      const error = hint.originalException;
-      if (error && typeof error === 'object' && 'message' in error) {
-        const message = (error as any).message;
-        // Don't send database connection timeout errors in development
-        if (
-          process.env.NODE_ENV === 'development' &&
-          message?.includes?.('connection timeout')
-        ) {
-          return null;
-        }
-      }
-    }
-    return event;
-  },
-
-  // Breadcrumbs
-  maxBreadcrumbs: 50,
-
-  // Ignore specific errors
-  ignoreErrors: [
-    'ResizeObserver loop limit exceeded',
-    'Non-Error promise rejection captured',
-  ],
-});
+  // Enable sending user PII (Personally Identifiable Information)
+  // https://docs.sentry.io/platforms/javascript/guides/nextjs/configuration/options/#sendDefaultPii
+  sendDefaultPii: true,
+})

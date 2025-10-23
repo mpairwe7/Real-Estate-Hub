@@ -4396,7 +4396,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sentry/nextjs@npm:^10.21.0":
+"@sentry/nextjs@npm:^10":
   version: 10.21.0
   resolution: "@sentry/nextjs@npm:10.21.0"
   dependencies:
@@ -10587,7 +10587,7 @@ __metadata:
     "@radix-ui/react-toggle": "npm:1.1.1"
     "@radix-ui/react-toggle-group": "npm:1.1.1"
     "@radix-ui/react-tooltip": "npm:1.1.6"
-    "@sentry/nextjs": "npm:^10.21.0"
+    "@sentry/nextjs": "npm:^10"
     "@supabase/ssr": "npm:latest"
     "@supabase/supabase-js": "npm:latest"
     "@tailwindcss/postcss": "npm:^4.1.9"

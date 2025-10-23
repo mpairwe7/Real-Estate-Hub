@@ -256,7 +256,8 @@
     "deleteConfirm": "Are you sure you want to delete this property?",
     "deleteDescription": "This action cannot be undone. This will permanently delete the property and all associated data.",
     "deleting": "Deleting...",
-    "editDetails": "Edit Details"
+    "editDetails": "Edit Details",
+    "edit": "Edit"
   },
   "maintenance": {
     "title": "Maintenance Requests",

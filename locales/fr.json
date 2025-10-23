@@ -256,7 +256,8 @@
     "deleteConfirm": "Êtes-vous sûr de vouloir supprimer cette propriété?",
     "deleteDescription": "Cette action ne peut pas être annulée. Cela supprimera définitivement la propriété et toutes les données associées.",
     "deleting": "Suppression...",
-    "editDetails": "Modifier les détails"
+    "editDetails": "Modifier les détails",
+    "edit": "Modifier"
   },
   "maintenance": {
     "title": "Demandes de maintenance",

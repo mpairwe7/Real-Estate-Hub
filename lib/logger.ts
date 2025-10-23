@@ -1,9 +1,11 @@
 /**
  * Structured Logger for Production
- * Week 3: Cloud Deployment & Monitoring
+ * Week 4: Sentry Integration for Error Tracking & Monitoring
  * 
- * Provides consistent, structured logging for better monitoring and debugging
+ * Provides consistent, structured logging with Sentry integration
  */
+
+import * as Sentry from '@sentry/nextjs';
 
 type LogLevel = 'info' | 'warn' | 'error' | 'debug'
 
@@ -57,22 +59,65 @@ class Logger {
   info(message: string, metadata?: LogMetadata) {
     const entry = this.formatLog('info', message, metadata)
     console.log(JSON.stringify(entry))
+    
+    // Send to Sentry as breadcrumb
+    Sentry.addBreadcrumb({
+      category: 'info',
+      message,
+      level: 'info',
+      data: metadata,
+    })
   }
 
   warn(message: string, metadata?: LogMetadata) {
     const entry = this.formatLog('warn', message, metadata)
     console.warn(JSON.stringify(entry))
+    
+    // Send to Sentry as warning
+    Sentry.captureMessage(message, {
+      level: 'warning',
+      contexts: {
+        metadata: metadata || {},
+      },
+    })
   }
 
   error(message: string, error?: Error, metadata?: LogMetadata) {
     const entry = this.formatLog('error', message, metadata, error)
     console.error(JSON.stringify(entry))
+    
+    // Send to Sentry as error
+    if (error) {
+      Sentry.captureException(error, {
+        contexts: {
+          metadata: metadata || {},
+        },
+        tags: {
+          errorType: error.name,
+        },
+      })
+    } else {
+      Sentry.captureMessage(message, {
+        level: 'error',
+        contexts: {
+          metadata: metadata || {},
+        },
+      })
+    }
   }
 
   debug(message: string, metadata?: LogMetadata) {
     if (this.environment === 'development') {
       const entry = this.formatLog('debug', message, metadata)
       console.debug(JSON.stringify(entry))
+      
+      // Add as breadcrumb in Sentry
+      Sentry.addBreadcrumb({
+        category: 'debug',
+        message,
+        level: 'debug',
+        data: metadata,
+      })
     }
   }
 
@@ -84,6 +129,16 @@ class Logger {
       path,
       type: 'api_request',
     })
+    
+    // Create Sentry span for API monitoring
+    const span = Sentry.startSpan({
+      op: 'http.server',
+      name: `${method} ${path}`,
+    }, () => {
+      // Span will be automatically finished
+    })
+    
+    return span
   }
 
   apiResponse(method: string, path: string, statusCode: number, duration: number, metadata?: LogMetadata) {
@@ -95,6 +150,18 @@ class Logger {
       duration,
       type: 'api_response',
     })
+    
+    // Track performance metrics in Sentry
+    Sentry.metrics.distribution('api.response_time', duration, {
+      unit: 'millisecond',
+    })
+    
+    // Add tags to current span if available
+    Sentry.setTags({
+      'api.method': method,
+      'api.path': path,
+      'api.status': statusCode.toString(),
+    })
   }
 
   databaseQuery(query: string, duration: number, metadata?: LogMetadata) {
@@ -104,6 +171,14 @@ class Logger {
       duration,
       type: 'database_query',
     })
+    
+    // Track database performance
+    Sentry.metrics.distribution('db.query_time', duration, {
+      unit: 'millisecond',
+    })
+    
+    // Add context to current transaction
+    Sentry.setTag('db.query_type', metadata?.queryType || 'unknown')
   }
 
   userAction(action: string, userId?: string, metadata?: LogMetadata) {
@@ -113,6 +188,38 @@ class Logger {
       userId,
       type: 'user_action',
     })
+    
+    // Set user context in Sentry
+    if (userId) {
+      Sentry.setUser({ id: userId })
+    }
+    
+    // Track user action
+    Sentry.addBreadcrumb({
+      category: 'user_action',
+      message: action,
+      level: 'info',
+      data: metadata,
+    })
+  }
+  
+  // New method: Set user context
+  setUser(userId: string, email?: string, username?: string) {
+    Sentry.setUser({
+      id: userId,
+      email,
+      username,
+    })
+  }
+  
+  // New method: Clear user context (on logout)
+  clearUser() {
+    Sentry.setUser(null)
+  }
+  
+  // New method: Add custom context
+  setContext(key: string, data: Record<string, any>) {
+    Sentry.setContext(key, data)
   }
 }
 

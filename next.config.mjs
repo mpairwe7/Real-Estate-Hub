@@ -1,4 +1,5 @@
 import createNextIntlPlugin from 'next-intl/plugin'
+import { withSentryConfig } from '@sentry/nextjs'
 
 const withNextIntl = createNextIntlPlugin()
 
@@ -58,4 +59,34 @@ const nextConfig = {
   },
 }
 
-export default withNextIntl(nextConfig)
+// Wrap config with Sentry for error tracking and source maps
+const sentryWebpackPluginOptions = {
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options
+
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+
+  // Only upload source maps in production
+  silent: true,
+  hideSourceMaps: true,
+  disableLogger: true,
+
+  // For all available options, see:
+  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+
+  // Upload a larger set of source maps for better stack traces
+  widenClientFileUpload: true,
+
+  // Automatically annotate React components for easier debugging
+  reactComponentAnnotation: {
+    enabled: true,
+  },
+
+  // Automatically instrument server components
+  automaticVercelMonitors: true,
+}
+
+// Export config with both Sentry and Next-Intl wrappers
+export default withSentryConfig(withNextIntl(nextConfig), sentryWebpackPluginOptions)

@@ -1,9 +1,10 @@
 /**
- * Prometheus Metrics Exporter for Next.js
- * Collects and exposes application metrics in Prometheus format
+ * Application Metrics for Sentry
+ * Collects and sends metrics to Sentry for monitoring
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import * as Sentry from '@sentry/nextjs';
 
 // Metrics storage
 interface Metric {
@@ -253,6 +254,23 @@ export function trackRequest(req: NextRequest, startTime: number, statusCode: nu
     method,
     path,
   });
+  
+  // Send metrics to Sentry
+  try {
+    Sentry.metrics.distribution('http_request_duration_ms', duration, {
+      unit: 'millisecond',
+    });
+    
+    // Set tags for current transaction
+    Sentry.setTags({
+      'http.method': method,
+      'http.path': path,
+      'http.status_code': statusCode.toString(),
+    });
+  } catch (error) {
+    // Sentry metrics may not be available in all environments
+    console.debug('Sentry metrics not available:', error);
+  }
 }
 
 // Helper to track custom metrics

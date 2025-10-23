@@ -37,6 +37,7 @@ export function SentryMonitoringWidget() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [autoRefresh, setAutoRefresh] = useState(true)
+  const [isMockData, setIsMockData] = useState(false)
 
   const fetchData = async () => {
     try {
@@ -44,13 +45,15 @@ export function SentryMonitoringWidget() {
       setError(null)
       const response = await fetch("/api/monitoring/sentry?range=24h")
       
-      if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.message || "Failed to fetch data")
-      }
-
       const result = await response.json()
-      setData(result.data)
+      
+      if (result.success) {
+        setData(result.data)
+        setIsMockData(result.mock || false)
+        setError(result.warning || null)
+      } else {
+        throw new Error(result.message || "Failed to fetch data")
+      }
     } catch (err) {
       setError(err instanceof Error ? err.message : "Unknown error")
       console.error("Error fetching Sentry data:", err)
@@ -178,6 +181,11 @@ export function SentryMonitoringWidget() {
           <div className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
             <CardTitle className="font-serif">System Health Dashboard</CardTitle>
+            {isMockData && (
+              <Badge variant="outline" className="text-xs">
+                Demo Mode
+              </Badge>
+            )}
           </div>
           <Button
             onClick={fetchData}
@@ -189,7 +197,22 @@ export function SentryMonitoringWidget() {
           </Button>
         </div>
         <CardDescription>
-          Last 24 hours • Updated {formatTimestamp(data.lastUpdated)}
+          {isMockData ? (
+            <>
+              Demo data • Configure Sentry API token for live monitoring
+              <br />
+              <a 
+                href="https://sentry.io/settings/account/api/auth-tokens/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-primary hover:underline text-xs"
+              >
+                Generate token with project:read and org:read scopes →
+              </a>
+            </>
+          ) : (
+            <>Last 24 hours • Updated {formatTimestamp(data.lastUpdated)}</>
+          )}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">

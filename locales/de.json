@@ -257,7 +257,8 @@
     "deleteDescription": "Diese Aktion kann nicht rückgängig gemacht werden. Dies wird die Immobilie und alle zugehörigen Daten dauerhaft löschen.",
     "deleting": "Wird gelöscht...",
     "editDetails": "Details bearbeiten",
-    "edit": "Bearbeiten"
+    "edit": "Bearbeiten",
+    "loading": "Laden..."
   },
   "maintenance": {
     "title": "Wartungsanfragen",

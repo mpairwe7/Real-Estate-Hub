@@ -257,7 +257,8 @@
     "deleteDescription": "Cette action ne peut pas être annulée. Cela supprimera définitivement la propriété et toutes les données associées.",
     "deleting": "Suppression...",
     "editDetails": "Modifier les détails",
-    "edit": "Modifier"
+    "edit": "Modifier",
+    "loading": "Chargement..."
   },
   "maintenance": {
     "title": "Demandes de maintenance",

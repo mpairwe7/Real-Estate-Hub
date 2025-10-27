@@ -154,7 +154,7 @@ export default async function BrowsePage({
                       className="overflow-hidden hover:border-primary/50 transition-colors"
                     >
                       <div className="flex flex-col sm:flex-row">
-                        <div className="sm:w-48 aspect-video sm:aspect-square bg-muted relative overflow-hidden flex-shrink-0">
+                        <div className="sm:w-48 aspect-video sm:aspect-square bg-muted relative overflow-hidden shrink-0">
                           {displayImage ? (
                             <Image
                               src={displayImage.image_url}

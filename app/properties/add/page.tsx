@@ -215,6 +215,9 @@ export default function AddPropertyPage() {
 
       // Insert property images if any
       if (images.length > 0 && propertyData && propertyData[0]) {
+        // Add a small delay to ensure the property insert is fully committed
+        await new Promise(resolve => setTimeout(resolve, 100))
+
         const imageInserts = images.map((imageUrl, index) => ({
           property_id: propertyData[0].id,
           image_url: imageUrl,
@@ -222,11 +225,34 @@ export default function AddPropertyPage() {
           display_order: index,
         }))
 
-        const { error: imagesError } = await supabase.from("property_images").insert(imageInserts)
+        console.log("Attempting to insert images:", {
+          propertyId: propertyData[0].id,
+          userId: user.id,
+          imageCount: imageInserts.length,
+          images: imageInserts
+        })
+
+        const { data: insertedImages, error: imagesError } = await supabase
+          .from("property_images")
+          .insert(imageInserts)
+          .select()
 
         if (imagesError) {
-          console.error("Error inserting images:", imagesError)
-          // Don't throw error, property is already created
+          console.error("Error inserting images:", {
+            error: imagesError,
+            message: imagesError.message,
+            details: imagesError.details,
+            hint: imagesError.hint,
+            code: imagesError.code,
+          })
+          
+          toast({
+            title: "Warning",
+            description: "Property created but images failed to save. Please edit the property to add images.",
+            variant: "destructive",
+          })
+        } else {
+          console.log("Successfully inserted images:", insertedImages)
         }
       }
 

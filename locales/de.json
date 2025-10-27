@@ -260,7 +260,8 @@
     "edit": "Bearbeiten",
     "loading": "Laden...",
     "delete": "Löschen",
-    "viewPublicListing": "Öffentliche Anzeige ansehen"
+    "viewPublicListing": "Öffentliche Anzeige ansehen",
+    "deletePropertyConfirm": "Sind Sie sicher, dass Sie diese Immobilie löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
   },
   "maintenance": {
     "title": "Wartungsanfragen",

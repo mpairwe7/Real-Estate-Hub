@@ -260,7 +260,8 @@
     "edit": "Modifier",
     "loading": "Chargement...",
     "delete": "Supprimer",
-    "viewPublicListing": "Voir l'annonce publique"
+    "viewPublicListing": "Voir l'annonce publique",
+    "deletePropertyConfirm": "Êtes-vous sûr de vouloir supprimer cette propriété? Cette action ne peut pas être annulée."
   },
   "maintenance": {
     "title": "Demandes de maintenance",

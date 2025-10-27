@@ -11,6 +11,7 @@ import { ConfirmDialog } from "@/components/confirm-dialog"
 import { useToast } from "@/hooks/use-toast"
 import { Building2, Bed, Bath, Maximize, MapPin, ArrowLeft, Edit, Trash2 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useTranslations } from "next-intl"
 
 export default function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
@@ -54,7 +55,17 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
         return
       }
 
-      setProperty(data)
+      // Fetch property images
+      const { data: imagesData } = await supabase
+        .from("property_images")
+        .select("*")
+        .eq("property_id", resolvedParams.id)
+        .order("display_order", { ascending: true })
+
+      setProperty({
+        ...data,
+        property_images: imagesData || []
+      })
       setIsLoading(false)
     }
 
@@ -137,9 +148,21 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
           <div className="lg:col-span-2 space-y-6">
             <Card>
               <CardContent className="p-0">
-                <div className="aspect-video bg-muted flex items-center justify-center rounded-t-lg">
-                  <Building2 className="h-24 w-24 text-muted-foreground" />
-                </div>
+                {property.property_images && property.property_images.length > 0 ? (
+                  <div className="aspect-video relative overflow-hidden rounded-t-lg">
+                    <Image
+                      src={property.property_images.find((img: any) => img.is_primary)?.image_url || property.property_images[0].image_url}
+                      alt={property.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 66vw"
+                    />
+                  </div>
+                ) : (
+                  <div className="aspect-video bg-muted flex items-center justify-center rounded-t-lg">
+                    <Building2 className="h-24 w-24 text-muted-foreground" />
+                  </div>
+                )}
               </CardContent>
             </Card>
 
@@ -237,6 +260,38 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ id: s
                 </div>
               </CardContent>
             </Card>
+
+            {/* Image Gallery */}
+            {property.property_images && property.property_images.length > 1 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Images ({property.property_images.length})</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {property.property_images.map((image: any, index: number) => (
+                      <div
+                        key={image.id || index}
+                        className="relative aspect-video overflow-hidden rounded-lg border border-border"
+                      >
+                        <Image
+                          src={image.image_url}
+                          alt={`${property.title} - Image ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 50vw, 33vw"
+                        />
+                        {image.is_primary && (
+                          <div className="absolute top-2 left-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded">
+                            Primary
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </div>
 
           <div className="space-y-6">

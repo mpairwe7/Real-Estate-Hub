@@ -259,7 +259,8 @@
     "editDetails": "Details bearbeiten",
     "edit": "Bearbeiten",
     "loading": "Laden...",
-    "delete": "Löschen"
+    "delete": "Löschen",
+    "viewPublicListing": "Öffentliche Anzeige ansehen"
   },
   "maintenance": {
     "title": "Wartungsanfragen",

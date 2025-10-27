@@ -259,7 +259,8 @@
     "editDetails": "Edit Details",
     "edit": "Edit",
     "loading": "Loading...",
-    "delete": "Delete"
+    "delete": "Delete",
+    "viewPublicListing": "View Public Listing"
   },
   "maintenance": {
     "title": "Maintenance Requests",

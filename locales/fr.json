@@ -259,7 +259,8 @@
     "editDetails": "Modifier les détails",
     "edit": "Modifier",
     "loading": "Chargement...",
-    "delete": "Supprimer"
+    "delete": "Supprimer",
+    "viewPublicListing": "Voir l'annonce publique"
   },
   "maintenance": {
     "title": "Demandes de maintenance",

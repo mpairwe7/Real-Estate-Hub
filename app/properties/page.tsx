@@ -20,24 +20,36 @@ export default async function PropertiesPage() {
     redirect("/auth/login")
   }
 
-  // Fetch user's properties with images
-  const { data: properties, error } = await supabase
+  // Fetch user's properties
+  const { data: propertiesData, error: propertiesError } = await supabase
     .from("properties")
-    .select(`
-      *,
-      property_images (
-        id,
-        image_url,
-        is_primary,
-        display_order
-      )
-    `)
+    .select("*")
     .eq("owner_id", user.id)
     .order("created_at", { ascending: false })
 
-  if (error) {
-    console.error("[v0] Error fetching properties:", error)
+  if (propertiesError) {
+    console.error("[v0] Error fetching properties:", propertiesError)
   }
+
+  // Fetch property images separately
+  const propertyIds = propertiesData?.map(p => p.id) || []
+  let imagesData: any[] = []
+  
+  if (propertyIds.length > 0) {
+    const { data: images } = await supabase
+      .from("property_images")
+      .select("*")
+      .in("property_id", propertyIds)
+      .order("display_order", { ascending: true })
+    
+    imagesData = images || []
+  }
+
+  // Combine properties with their images
+  const properties = propertiesData?.map(property => ({
+    ...property,
+    property_images: imagesData.filter(img => img.property_id === property.id)
+  }))
 
   return (
     <div className="min-h-screen bg-background">

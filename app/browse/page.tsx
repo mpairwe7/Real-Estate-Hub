@@ -27,35 +27,47 @@ export default async function BrowsePage({
   const params = await searchParams
   const supabase = await createClient()
 
-  // Build query with images
+  // Build query for properties
   let query = supabase
     .from("properties")
-    .select(`
-      *,
-      property_images (
-        id,
-        image_url,
-        is_primary,
-        display_order
-      )
-    `)
+    .select("*")
     .eq("status", "available")
 
-  if (params.type) {
+  if (params.type && params.type !== "all") {
     query = query.eq("property_type", params.type)
   }
-  if (params.listing) {
+  if (params.listing && params.listing !== "all") {
     query = query.eq("listing_type", params.listing)
   }
   if (params.city) {
     query = query.ilike("city", `%${params.city}%`)
   }
 
-  const { data: properties, error } = await query.order("created_at", { ascending: false })
+  const { data: propertiesData, error: propertiesError } = await query.order("created_at", { ascending: false })
 
-  if (error) {
-    console.error("[v0] Error fetching properties:", error)
+  if (propertiesError) {
+    console.error("[v0] Error fetching properties:", propertiesError)
   }
+
+  // Fetch property images separately
+  const propertyIds = propertiesData?.map(p => p.id) || []
+  let imagesData: any[] = []
+  
+  if (propertyIds.length > 0) {
+    const { data: images } = await supabase
+      .from("property_images")
+      .select("*")
+      .in("property_id", propertyIds)
+      .order("display_order", { ascending: true })
+    
+    imagesData = images || []
+  }
+
+  // Combine properties with their images
+  const properties = propertiesData?.map(property => ({
+    ...property,
+    property_images: imagesData.filter(img => img.property_id === property.id)
+  }))
 
   return (
     <div className="min-h-screen bg-background">
@@ -154,7 +166,7 @@ export default async function BrowsePage({
                       className="overflow-hidden hover:border-primary/50 transition-colors"
                     >
                       <div className="flex flex-col sm:flex-row">
-                        <div className="sm:w-48 aspect-video sm:aspect-square bg-muted relative overflow-hidden flex-shrink-0">
+                        <div className="sm:w-48 aspect-video sm:aspect-square bg-muted relative overflow-hidden shrink-0">
                           {displayImage ? (
                             <Image
                               src={displayImage.image_url}

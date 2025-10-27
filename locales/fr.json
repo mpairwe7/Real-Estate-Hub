@@ -258,7 +258,8 @@
     "deleting": "Suppression...",
     "editDetails": "Modifier les détails",
     "edit": "Modifier",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "delete": "Supprimer"
   },
   "maintenance": {
     "title": "Demandes de maintenance",

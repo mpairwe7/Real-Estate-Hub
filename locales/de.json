@@ -258,7 +258,8 @@
     "deleting": "Wird gelöscht...",
     "editDetails": "Details bearbeiten",
     "edit": "Bearbeiten",
-    "loading": "Laden..."
+    "loading": "Laden...",
+    "delete": "Löschen"
   },
   "maintenance": {
     "title": "Wartungsanfragen",

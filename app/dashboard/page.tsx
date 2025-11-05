@@ -2,10 +2,11 @@ import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { Navigation } from "@/components/navigation"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Building2, Wrench, DollarSign, TrendingUp } from "lucide-react"
+import { Building2, Wrench, DollarSign, TrendingUp, Activity } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { getTranslations } from "next-intl/server"
+import { SentryMonitoringWidget } from "@/components/sentry-monitoring-widget"
 
 export default async function DashboardPage() {
   const t = await getTranslations("dashboard")
@@ -106,7 +107,7 @@ export default async function DashboardPage() {
         </div>
 
         {/* Quick Actions */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
               <CardTitle className="font-serif">{t("quickActions.title")}</CardTitle>
@@ -157,6 +158,8 @@ export default async function DashboardPage() {
               </div>
             </CardContent>
           </Card>
+
+          <SentryMonitoringWidget />
         </div>
       </div>
     </div>

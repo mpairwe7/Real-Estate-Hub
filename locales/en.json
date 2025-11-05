@@ -256,7 +256,12 @@
     "deleteConfirm": "Are you sure you want to delete this property?",
     "deleteDescription": "This action cannot be undone. This will permanently delete the property and all associated data.",
     "deleting": "Deleting...",
-    "editDetails": "Edit Details"
+    "editDetails": "Edit Details",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "delete": "Delete",
+    "viewPublicListing": "View Public Listing",
+    "deletePropertyConfirm": "Are you sure you want to delete this property? This action cannot be undone."
   },
   "maintenance": {
     "title": "Maintenance Requests",

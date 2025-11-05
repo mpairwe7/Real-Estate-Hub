@@ -1,0 +1,11 @@
+{
+  "servers": {
+    "Sentry": {
+      "url": "https://mcp.sentry.dev/mcp/makerere-university-h0/javascript-nextjs",
+      "type": "http",
+      "headers": {
+        "Authorization": "Bearer ${env:SENTRY_AUTH_TOKEN}"
+      }
+    }
+  }
+}

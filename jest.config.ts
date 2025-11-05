@@ -47,6 +47,7 @@ const config: Config = {
     '<rootDir>/node_modules/',
     '<rootDir>/.next/',
     '<rootDir>/__tests__/test-utils.tsx',
+    '<rootDir>/e2e/',
   ],
   transformIgnorePatterns: [
     '/node_modules/',

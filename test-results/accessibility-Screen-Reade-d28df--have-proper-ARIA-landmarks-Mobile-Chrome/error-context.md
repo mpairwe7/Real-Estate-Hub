@@ -1,0 +1,63 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - img "Luxury real estate" [ref=e5]
+      - generic [ref=e9]:
+        - img [ref=e12]
+        - heading "EstateHub" [level=1] [ref=e16]
+        - paragraph [ref=e17]: Your complete platform for real estate management and property maintenance. Find properties, manage listings, and handle maintenance—all in one place.
+        - generic [ref=e18]:
+          - link "Get Started" [ref=e19] [cursor=pointer]:
+            - /url: /auth/sign-up
+            - button "Get Started" [ref=e20]
+          - link "Sign In" [ref=e21] [cursor=pointer]:
+            - /url: /auth/login
+            - button "Sign In" [ref=e22]
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - heading "Everything You Need" [level=2] [ref=e26]
+        - paragraph [ref=e27]: Powerful features designed for property owners, tenants, and maintenance providers
+      - generic [ref=e28]:
+        - generic [ref=e29]:
+          - img [ref=e31]
+          - heading "Map-Based Search" [level=3] [ref=e34]
+          - paragraph [ref=e35]: Find properties with interactive map search. View locations, neighborhoods, and nearby amenities at a glance.
+        - generic [ref=e36]:
+          - img [ref=e38]
+          - heading "Property Listings" [level=3] [ref=e42]
+          - paragraph [ref=e43]: List properties for rent or sale with detailed information, photos, and pricing. Manage all your listings in one dashboard.
+        - generic [ref=e44]:
+          - img [ref=e46]
+          - heading "Maintenance Management" [level=3] [ref=e48]
+          - paragraph [ref=e49]: Request and track maintenance services. Connect with providers and manage repairs efficiently.
+        - generic [ref=e50]:
+          - img [ref=e52]
+          - heading "Secure Payments" [level=3] [ref=e54]
+          - paragraph [ref=e55]: Process payments securely with PayPal and MTN Mobile Money integration. Track all transactions in one place.
+        - generic [ref=e56]:
+          - img [ref=e58]
+          - heading "Analytics & Insights" [level=3] [ref=e61]
+          - paragraph [ref=e62]: Track property performance, rental income, and maintenance costs with detailed analytics and reports.
+        - generic [ref=e63]:
+          - img [ref=e65]
+          - heading "Multi-User Support" [level=3] [ref=e70]
+          - paragraph [ref=e71]: Built for owners, tenants, agents, and maintenance providers. Everyone gets the tools they need.
+    - generic [ref=e74]:
+      - heading "Ready to Get Started?" [level=2] [ref=e75]
+      - paragraph [ref=e76]: Join EstateHub today and transform how you manage real estate and maintenance.
+      - link "Create Your Account" [ref=e77] [cursor=pointer]:
+        - /url: /auth/sign-up
+        - button "Create Your Account" [ref=e78]
+    - contentinfo [ref=e79]:
+      - generic [ref=e81]:
+        - generic [ref=e82]:
+          - img [ref=e83]
+          - generic [ref=e87]: EstateHub
+        - paragraph [ref=e88]: © 2025 EstateHub. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=e94] [cursor=pointer]:
+    - img [ref=e95]
+  - alert [ref=e98]
+```

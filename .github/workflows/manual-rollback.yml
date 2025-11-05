@@ -1,0 +1,107 @@
+name: Manual Rollback
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for rollback'
+        required: true
+        type: string
+      deployment_id:
+        description: 'Deployment ID to rollback to (leave empty for previous)'
+        required: false
+        type: string
+
+jobs:
+  rollback:
+    name: Rollback Deployment
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Install Vercel CLI
+        run: npm install -g vercel@latest
+      
+      - name: Authenticate with Vercel
+        run: |
+          echo "Authenticating with Vercel..."
+          vercel whoami --token=${{ secrets.VERCEL_TOKEN }}
+      
+      - name: List Recent Deployments
+        id: list-deployments
+        run: |
+          echo "📋 Fetching recent deployments..."
+          vercel ls --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }} || echo "No deployments found"
+      
+      - name: Perform Rollback
+        run: |
+          echo "🔄 Initiating rollback..."
+          echo "Reason: ${{ github.event.inputs.reason }}"
+          
+          if [ -n "${{ github.event.inputs.deployment_id }}" ]; then
+            echo "Rolling back to specific deployment: ${{ github.event.inputs.deployment_id }}"
+            # Vercel CLI doesn't have direct rollback command
+            # Manual rollback must be done via dashboard
+            echo "⚠️ Automatic rollback to specific deployment requires Vercel API"
+            echo "Please complete rollback via Vercel dashboard"
+          else
+            echo "Rolling back to previous production deployment"
+            echo "⚠️ Please complete rollback via Vercel dashboard:"
+            echo "https://vercel.com/deployments"
+          fi
+      
+      - name: Create rollback notification issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🔄 Manual Rollback Initiated',
+              body: `## Rollback Information\n\n` +
+                    `**Initiated by:** @${{ github.actor }}\n` +
+                    `**Reason:** ${{ github.event.inputs.reason }}\n` +
+                    `**Timestamp:** ${new Date().toISOString()}\n` +
+                    `**Deployment ID:** ${{ github.event.inputs.deployment_id || 'Previous deployment' }}\n\n` +
+                    `### Next Steps\n` +
+                    `1. Complete rollback via Vercel dashboard: https://vercel.com/deployments\n` +
+                    `2. Verify application is working correctly\n` +
+                    `3. Check Sentry for any ongoing issues\n` +
+                    `4. Document the issue that caused rollback\n` +
+                    `5. Close this issue after verification\n\n` +
+                    `### Monitoring\n` +
+                    `- Sentry: https://sentry.io/organizations/makerere-university-h0/projects/javascript-nextjs/\n` +
+                    `- Vercel: https://vercel.com/deployments`,
+              labels: ['deployment', 'rollback', 'manual']
+            });
+            
+            console.log(`Created issue #${issue.data.number}`);
+      
+      - name: Comment on latest commit
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.repos.createCommitComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: context.sha,
+              body: '🔄 **Manual Rollback Initiated**\n\n' +
+                    'Reason: ${{ github.event.inputs.reason }}\n\n' +
+                    'Complete rollback at: https://vercel.com/deployments'
+            })
+        continue-on-error: true
+      
+      - name: Summary
+        run: |
+          echo "### Rollback Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Rollback workflow completed" >> $GITHUB_STEP_SUMMARY
+          echo "⚠️ Complete rollback manually via Vercel dashboard" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Reason:** ${{ github.event.inputs.reason }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Links:**" >> $GITHUB_STEP_SUMMARY
+          echo "- [Vercel Deployments](https://vercel.com/deployments)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Sentry Monitoring](https://sentry.io/organizations/makerere-university-h0/projects/javascript-nextjs/)" >> $GITHUB_STEP_SUMMARY

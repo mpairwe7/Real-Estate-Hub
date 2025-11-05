@@ -11,9 +11,10 @@ import { ConfirmDialog } from "@/components/confirm-dialog"
 import { useToast } from "@/hooks/use-toast"
 import { Building2, Bed, Bath, Maximize, MapPin, ArrowLeft, Edit, Trash2 } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import { useTranslations } from "next-intl"
 
-export default function PropertyDetailPage({ params }: { params: { id: string } }) {
+export default function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const t = useTranslations("properties")
   const router = useRouter()
   const supabase = createClient()
@@ -22,9 +23,13 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
   const [isLoading, setIsLoading] = useState(true)
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false)
   const [isDeleting, setIsDeleting] = useState(false)
+  const [propertyId, setPropertyId] = useState<string>("")
 
   useEffect(() => {
     async function fetchProperty() {
+      const resolvedParams = await params
+      setPropertyId(resolvedParams.id)
+
       const {
         data: { user },
       } = await supabase.auth.getUser()
@@ -36,7 +41,7 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
       const { data, error } = await supabase
         .from("properties")
         .select("*")
-        .eq("id", params.id)
+        .eq("id", resolvedParams.id)
         .eq("owner_id", user.id)
         .single()
 
@@ -50,18 +55,28 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
         return
       }
 
-      setProperty(data)
+      // Fetch property images
+      const { data: imagesData } = await supabase
+        .from("property_images")
+        .select("*")
+        .eq("property_id", resolvedParams.id)
+        .order("display_order", { ascending: true })
+
+      setProperty({
+        ...data,
+        property_images: imagesData || []
+      })
       setIsLoading(false)
     }
 
     fetchProperty()
-  }, [params.id])
+  }, [])
 
   const handleDelete = async () => {
     setIsDeleting(true)
 
     try {
-      const { error } = await supabase.from("properties").delete().eq("id", params.id)
+      const { error } = await supabase.from("properties").delete().eq("id", propertyId)
 
       if (error) throw error
 
@@ -111,7 +126,7 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
             </Button>
           </Link>
           <div className="flex gap-2">
-            <Link href={`/properties/${params.id}/edit`}>
+            <Link href={`/properties/${propertyId}/edit`}>
               <Button variant="outline" size="sm" className="gap-2 bg-transparent">
                 <Edit className="h-4 w-4" />
                 {t("edit")}
@@ -133,9 +148,21 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
           <div className="lg:col-span-2 space-y-6">
             <Card>
               <CardContent className="p-0">
-                <div className="aspect-video bg-muted flex items-center justify-center rounded-t-lg">
-                  <Building2 className="h-24 w-24 text-muted-foreground" />
-                </div>
+                {property.property_images && property.property_images.length > 0 ? (
+                  <div className="aspect-video relative overflow-hidden rounded-t-lg">
+                    <Image
+                      src={property.property_images.find((img: any) => img.is_primary)?.image_url || property.property_images[0].image_url}
+                      alt={property.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 66vw"
+                    />
+                  </div>
+                ) : (
+                  <div className="aspect-video bg-muted flex items-center justify-center rounded-t-lg">
+                    <Building2 className="h-24 w-24 text-muted-foreground" />
+                  </div>
+                )}
               </CardContent>
             </Card>
 
@@ -233,6 +260,38 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
                 </div>
               </CardContent>
             </Card>
+
+            {/* Image Gallery */}
+            {property.property_images && property.property_images.length > 1 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Images ({property.property_images.length})</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {property.property_images.map((image: any, index: number) => (
+                      <div
+                        key={image.id || index}
+                        className="relative aspect-video overflow-hidden rounded-lg border border-border"
+                      >
+                        <Image
+                          src={image.image_url}
+                          alt={`${property.title} - Image ${index + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 768px) 50vw, 33vw"
+                        />
+                        {image.is_primary && (
+                          <div className="absolute top-2 left-2 bg-primary text-primary-foreground text-xs px-2 py-1 rounded">
+                            Primary
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
           </div>
 
           <div className="space-y-6">
@@ -248,7 +307,7 @@ export default function PropertyDetailPage({ params }: { params: { id: string } 
                       : t(`listingTypes.${property.listing_type}`)}
                   </p>
                 </div>
-                <Link href={`/browse/${params.id}`}>
+                <Link href={`/browse/${propertyId}`}>
                   <Button className="w-full">{t("viewPublicListing")}</Button>
                 </Link>
               </CardContent>

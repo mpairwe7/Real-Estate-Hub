@@ -27,7 +27,7 @@ import Link from "next/link"
 import { z } from "zod"
 import { useTranslations } from "next-intl"
 
-export default function EditPropertyPage({ params }: { params: { id: string } }) {
+export default function EditPropertyPage({ params }: { params: Promise<{ id: string }> }) {
   const t = useTranslations("properties")
   const router = useRouter()
   const supabase = createClient()
@@ -35,6 +35,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
   const [isLoading, setIsLoading] = useState(false)
   const [isFetching, setIsFetching] = useState(true)
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const [propertyId, setPropertyId] = useState<string>("")
 
   const [formData, setFormData] = useState({
     title: "",
@@ -62,6 +63,9 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
 
   useEffect(() => {
     async function fetchProperty() {
+      const resolvedParams = await params
+      setPropertyId(resolvedParams.id)
+
       const {
         data: { user },
       } = await supabase.auth.getUser()
@@ -73,7 +77,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
       const { data, error } = await supabase
         .from("properties")
         .select("*")
-        .eq("id", params.id)
+        .eq("id", resolvedParams.id)
         .eq("owner_id", user.id)
         .single()
 
@@ -110,7 +114,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
       const { data: imageData, error: imageError } = await supabase
         .from("property_images")
         .select("id, image_url, is_primary, display_order")
-        .eq("property_id", params.id)
+        .eq("property_id", resolvedParams.id)
         .order("display_order", { ascending: true })
 
       if (!imageError && imageData) {
@@ -129,7 +133,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
     }
 
     fetchProperty()
-  }, [params.id])
+  }, [])
 
   const handleLocationSelect = (lat: number, lng: number, address: string) => {
     setFormData((prev) => ({
@@ -191,7 +195,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
           status: formData.status,
           updated_at: new Date().toISOString(),
         })
-        .eq("id", params.id)
+        .eq("id", propertyId)
 
       if (updateError) throw updateError
 
@@ -210,7 +214,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
 
       if (newImages.length > 0) {
         const imageInserts = newImages.map((imageUrl, index) => ({
-          property_id: params.id,
+          property_id: propertyId,
           image_url: imageUrl,
           is_primary: images.indexOf(imageUrl) === 0,
           display_order: images.indexOf(imageUrl),
@@ -241,7 +245,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
         // variant: "default", // success not available in Radix toast
       })
 
-      router.push(`/properties/${params.id}`)
+      router.push(`/properties/${propertyId}`)
     } catch (err: any) {
       console.error("[v0] Error updating property:", err)
 
@@ -280,7 +284,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
 
       <div className="container mx-auto px-4 py-8">
         <div className="mb-6">
-          <Link href={`/properties/${params.id}`}>
+          <Link href={`/properties/${propertyId}`}>
             <Button variant="ghost" size="sm" className="gap-2">
               <ArrowLeft className="h-4 w-4" />
               {t("backToProperty")}
@@ -510,7 +514,7 @@ export default function EditPropertyPage({ params }: { params: { id: string } })
                 <Button
                   type="button"
                   variant="outline"
-                  onClick={() => router.push(`/properties/${params.id}`)}
+                  onClick={() => router.push(`/properties/${propertyId}`)}
                 >
                   {t("cancel")}
                 </Button>

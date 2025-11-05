@@ -1,0 +1,143 @@
+name: Deployment Health Monitor
+
+on:
+  schedule:
+    # Run every 15 minutes
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+
+jobs:
+  monitor:
+    name: Monitor Production Health
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Check Production Health
+        id: health
+        run: |
+          PRODUCTION_URL="https://real-estate-hub-eight.vercel.app"
+          
+          echo "Checking production health..."
+          
+          # Check homepage
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" "$PRODUCTION_URL" || echo "000")
+          echo "Homepage Status: $HTTP_CODE"
+          
+          if [ "$HTTP_CODE" != "200" ] && [ "$HTTP_CODE" != "301" ] && [ "$HTTP_CODE" != "302" ]; then
+            echo "status=down" >> $GITHUB_OUTPUT
+            echo "❌ Production site is DOWN (HTTP $HTTP_CODE)"
+            exit 1
+          fi
+          
+          # Check API endpoints
+          API_STATUS=$(curl -s -o /dev/null -w "%{http_code}" "$PRODUCTION_URL/api/health" || echo "000")
+          echo "API Status: $API_STATUS"
+          
+          # Measure response time
+          RESPONSE_TIME=$(curl -o /dev/null -s -w '%{time_total}\n' "$PRODUCTION_URL")
+          RESPONSE_MS=$(echo "$RESPONSE_TIME * 1000" | bc)
+          echo "Response Time: ${RESPONSE_MS}ms"
+          
+          echo "status=up" >> $GITHUB_OUTPUT
+          echo "response_time=$RESPONSE_MS" >> $GITHUB_OUTPUT
+          
+          # Alert if response time is slow
+          if (( $(echo "$RESPONSE_TIME > 3.0" | bc -l) )); then
+            echo "⚠️ Warning: Slow response time detected"
+            echo "slow_response=true" >> $GITHUB_OUTPUT
+          else
+            echo "✅ Response time is healthy"
+            echo "slow_response=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Check Sentry Error Rate
+        id: sentry
+        run: |
+          echo "Would check Sentry API for recent errors"
+          echo "Configure SENTRY_API_TOKEN for automated monitoring"
+          echo "error_spike=false" >> $GITHUB_OUTPUT
+        continue-on-error: true
+      
+      - name: Create alert issue if down
+        if: steps.health.outputs.status == 'down'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // Check if there's already an open issue
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'production-down'
+            });
+            
+            if (issues.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🚨 Production Site Down',
+                body: `## Production Alert\n\n` +
+                      `**Status:** DOWN ❌\n` +
+                      `**Time:** ${new Date().toISOString()}\n` +
+                      `**URL:** https://real-estate-hub-eight.vercel.app\n\n` +
+                      `### Immediate Actions\n` +
+                      `1. Check Vercel deployment status\n` +
+                      `2. Review Sentry for errors: https://sentry.io/organizations/makerere-university-h0/projects/javascript-nextjs/\n` +
+                      `3. Consider rollback if recent deployment\n` +
+                      `4. Check external dependencies (Supabase, Firebase)\n\n` +
+                      `### Rollback\n` +
+                      `If needed, use: Actions → Manual Rollback`,
+                labels: ['production-down', 'critical', 'deployment']
+              });
+            }
+      
+      - name: Create warning for slow response
+        if: steps.health.outputs.slow_response == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'performance-degraded'
+            });
+            
+            if (issues.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '⚠️ Performance Degradation Detected',
+                body: `## Performance Warning\n\n` +
+                      `**Response Time:** ${{ steps.health.outputs.response_time }}ms\n` +
+                      `**Time:** ${new Date().toISOString()}\n` +
+                      `**URL:** https://real-estate-hub-eight.vercel.app\n\n` +
+                      `### Investigation Needed\n` +
+                      `1. Check Vercel performance metrics\n` +
+                      `2. Review Sentry performance data\n` +
+                      `3. Check database performance\n` +
+                      `4. Review recent deployments\n\n` +
+                      `### Monitoring\n` +
+                      `- [Sentry Performance](https://sentry.io/organizations/makerere-university-h0/performance/)\n` +
+                      `- [Vercel Analytics](https://vercel.com/analytics)`,
+                labels: ['performance-degraded', 'monitoring']
+              });
+            }
+        continue-on-error: true
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "### Production Health Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ steps.health.outputs.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Response Time:** ${{ steps.health.outputs.response_time }}ms" >> $GITHUB_STEP_SUMMARY
+          echo "**Timestamp:** $(date -u)" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Links:**" >> $GITHUB_STEP_SUMMARY
+          echo "- [Production Site](https://real-estate-hub-eight.vercel.app)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Sentry Dashboard](https://sentry.io/organizations/makerere-university-h0/projects/javascript-nextjs/)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Vercel Dashboard](https://vercel.com/deployments)" >> $GITHUB_STEP_SUMMARY

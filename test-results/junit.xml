@@ -1,0 +1,2204 @@
+<testsuites id="" name="" tests="160" failures="108" skipped="0" errors="0" time="266.829243">
+<testsuite name="accessibility.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="chromium" tests="15" failures="2" skipped="0" time="64.053" errors="0">
+<testcase name="Accessibility › homepage should not have accessibility violations" classname="accessibility.spec.ts" time="8.97">
+<failure message="accessibility.spec.ts:11:7 homepage should not have accessibility violations" type="FAILURE">
+<![CDATA[  [chromium] › accessibility.spec.ts:11:7 › Accessibility › homepage should not have accessibility violations 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('main')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('main')
+
+
+      16 |     // Check for main landmarks
+      17 |     const main = page.locator('main');
+    > 18 |     await expect(main).toBeVisible();
+         |                        ^
+      19 |     
+      20 |     // Check for heading hierarchy
+      21 |     const h1 = page.locator('h1');
+        at /home/darkhorse/Documents/real-estate-app/e2e/accessibility.spec.ts:18:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/accessibility-Accessibilit-aeb62-ve-accessibility-violations-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/accessibility-Accessibilit-aeb62-ve-accessibility-violations-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/accessibility-Accessibilit-aeb62-ve-accessibility-violations-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|accessibility-Accessibilit-aeb62-ve-accessibility-violations-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|accessibility-Accessibilit-aeb62-ve-accessibility-violations-chromium/video.webm]]
+
+[[ATTACHMENT|accessibility-Accessibilit-aeb62-ve-accessibility-violations-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Accessibility › navigation should be keyboard accessible" classname="accessibility.spec.ts" time="5.57">
+</testcase>
+<testcase name="Accessibility › all images should have alt text" classname="accessibility.spec.ts" time="3.951">
+</testcase>
+<testcase name="Accessibility › form inputs should have labels" classname="accessibility.spec.ts" time="3.346">
+</testcase>
+<testcase name="Accessibility › buttons should have accessible names" classname="accessibility.spec.ts" time="3.744">
+</testcase>
+<testcase name="Accessibility › color contrast should be sufficient" classname="accessibility.spec.ts" time="3.461">
+</testcase>
+<testcase name="Accessibility › interactive elements should be focusable" classname="accessibility.spec.ts" time="3.655">
+</testcase>
+<testcase name="Accessibility › page should have valid HTML lang attribute" classname="accessibility.spec.ts" time="3.477">
+</testcase>
+<testcase name="Keyboard Navigation › should navigate with Tab key" classname="accessibility.spec.ts" time="3.269">
+</testcase>
+<testcase name="Keyboard Navigation › should navigate backwards with Shift+Tab" classname="accessibility.spec.ts" time="3.766">
+</testcase>
+<testcase name="Keyboard Navigation › should activate links with Enter key" classname="accessibility.spec.ts" time="5.981">
+</testcase>
+<testcase name="Keyboard Navigation › should activate buttons with Space key" classname="accessibility.spec.ts" time="4.907">
+</testcase>
+<testcase name="Screen Reader Support › should have proper ARIA landmarks" classname="accessibility.spec.ts" time="3.756">
+<failure message="accessibility.spec.ts:207:7 should have proper ARIA landmarks" type="FAILURE">
+<![CDATA[  [chromium] › accessibility.spec.ts:207:7 › Screen Reader Support › should have proper ARIA landmarks 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 1
+    Received:    0
+
+      212 |     const nav = await page.locator('nav, [role="navigation"]').count();
+      213 |     
+    > 214 |     expect(main).toBeGreaterThanOrEqual(1);
+          |                  ^
+      215 |     expect(nav).toBeGreaterThanOrEqual(1);
+      216 |   });
+      217 |
+        at /home/darkhorse/Documents/real-estate-app/e2e/accessibility.spec.ts:214:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-chromium/video.webm]]
+
+[[ATTACHMENT|accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Screen Reader Support › should have skip links" classname="accessibility.spec.ts" time="3.458">
+</testcase>
+<testcase name="Screen Reader Support › should have proper heading hierarchy" classname="accessibility.spec.ts" time="2.742">
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="chromium" tests="9" failures="3" skipped="0" time="71.728" errors="0">
+<testcase name="Authentication › should display homepage" classname="auth.spec.ts" time="4.54">
+</testcase>
+<testcase name="Authentication › should navigate to login page" classname="auth.spec.ts" time="11.172">
+<failure message="auth.spec.ts:12:7 should navigate to login page" type="FAILURE">
+<![CDATA[  [chromium] › auth.spec.ts:12:7 › Authentication › should navigate to login page ──────────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /login|sign in/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /login|sign in/i })
+
+
+      17 |     // Verify we're on the login page
+      18 |     await expect(page).toHaveURL(/.*login/);
+    > 19 |     await expect(page.getByRole('heading', { name: /login|sign in/i })).toBeVisible();
+         |                                                                         ^
+      20 |   });
+      21 |
+      22 |   test('should navigate to sign up page', async ({ page }) => {
+        at /home/darkhorse/Documents/real-estate-app/e2e/auth.spec.ts:19:73
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-navigate-to-login-page-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-navigate-to-login-page-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/auth-Authentication-should-navigate-to-login-page-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-should-navigate-to-login-page-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|auth-Authentication-should-navigate-to-login-page-chromium/video.webm]]
+
+[[ATTACHMENT|auth-Authentication-should-navigate-to-login-page-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication › should navigate to sign up page" classname="auth.spec.ts" time="34.915">
+<failure message="auth.spec.ts:22:7 should navigate to sign up page" type="FAILURE">
+<![CDATA[  [chromium] › auth.spec.ts:22:7 › Authentication › should navigate to sign up page ────────────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('link', { name: /sign up|register/i })
+
+
+      23 |     // Look for sign up link
+      24 |     const signUpLink = page.getByRole('link', { name: /sign up|register/i });
+    > 25 |     await signUpLink.click();
+         |                      ^
+      26 |     
+      27 |     // Verify we're on the sign up page
+      28 |     await expect(page).toHaveURL(/.*sign-up/);
+        at /home/darkhorse/Documents/real-estate-app/e2e/auth.spec.ts:25:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-navigate-to-sign-up-page-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-navigate-to-sign-up-page-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/auth-Authentication-should-navigate-to-sign-up-page-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-should-navigate-to-sign-up-page-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|auth-Authentication-should-navigate-to-sign-up-page-chromium/video.webm]]
+
+[[ATTACHMENT|auth-Authentication-should-navigate-to-sign-up-page-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication › should show validation errors on empty login form" classname="auth.spec.ts" time="4.228">
+</testcase>
+<testcase name="Authentication › should toggle password visibility" classname="auth.spec.ts" time="8.525">
+<failure message="auth.spec.ts:47:7 should toggle password visibility" type="FAILURE">
+<![CDATA[  [chromium] › auth.spec.ts:47:7 › Authentication › should toggle password visibility ──────────────
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByLabel(/password/i)
+    Expected: "text"
+    Received: "password"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" with timeout 5000ms
+      - waiting for getByLabel(/password/i)
+        9 × locator resolved to <input value="" required="" id="password" type="password" data-slot="input" class="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:o…/>
+          - unexpected value "password"
+
+
+      57 |     if (await toggleButton.isVisible()) {
+      58 |       await toggleButton.click();
+    > 59 |       await expect(passwordInput).toHaveAttribute('type', 'text');
+         |                                   ^
+      60 |     }
+      61 |   });
+      62 | });
+        at /home/darkhorse/Documents/real-estate-app/e2e/auth.spec.ts:59:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-toggle-password-visibility-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-toggle-password-visibility-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/auth-Authentication-should-toggle-password-visibility-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-should-toggle-password-visibility-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|auth-Authentication-should-toggle-password-visibility-chromium/video.webm]]
+
+[[ATTACHMENT|auth-Authentication-should-toggle-password-visibility-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication - Sign Up Flow › should allow user to fill sign up form" classname="auth.spec.ts" time="2.486">
+</testcase>
+<testcase name="Navigation › should navigate through main menu items" classname="auth.spec.ts" time="1.882">
+</testcase>
+<testcase name="Navigation › should toggle language switcher" classname="auth.spec.ts" time="1.876">
+</testcase>
+<testcase name="Navigation › should toggle theme" classname="auth.spec.ts" time="2.104">
+</testcase>
+</testsuite>
+<testsuite name="properties.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="chromium" tests="8" failures="1" skipped="0" time="35.16" errors="0">
+<testcase name="Property Browsing › should display property listings" classname="properties.spec.ts" time="10.181">
+<failure message="properties.spec.ts:8:7 should display property listings" type="FAILURE">
+<![CDATA[  [chromium] › properties.spec.ts:8:7 › Property Browsing › should display property listings ───────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText(/no properties|no results/i)
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText(/no properties|no results/i)
+
+
+      22 |       // Check for empty state message
+      23 |       const emptyState = page.getByText(/no properties|no results/i);
+    > 24 |       await expect(emptyState).toBeVisible();
+         |                                ^
+      25 |     } else {
+      26 |       expect(count).toBeGreaterThan(0);
+      27 |     }
+        at /home/darkhorse/Documents/real-estate-app/e2e/properties.spec.ts:24:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/properties-Property-Browsi-49bd5-d-display-property-listings-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/properties-Property-Browsi-49bd5-d-display-property-listings-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/properties-Property-Browsi-49bd5-d-display-property-listings-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|properties-Property-Browsi-49bd5-d-display-property-listings-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|properties-Property-Browsi-49bd5-d-display-property-listings-chromium/video.webm]]
+
+[[ATTACHMENT|properties-Property-Browsi-49bd5-d-display-property-listings-chromium/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Property Browsing › should allow filtering properties" classname="properties.spec.ts" time="1.563">
+</testcase>
+<testcase name="Property Browsing › should allow searching properties" classname="properties.spec.ts" time="1.487">
+</testcase>
+<testcase name="Property Browsing › should navigate to property details" classname="properties.spec.ts" time="3.858">
+</testcase>
+<testcase name="Property Browsing › should display property on map" classname="properties.spec.ts" time="4.507">
+</testcase>
+<testcase name="Property Details › should display property information" classname="properties.spec.ts" time="4.157">
+</testcase>
+<testcase name="Property Details › should display property images" classname="properties.spec.ts" time="4.702">
+</testcase>
+<testcase name="Property Details › should allow image carousel navigation" classname="properties.spec.ts" time="4.705">
+</testcase>
+</testsuite>
+<testsuite name="accessibility.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="firefox" tests="15" failures="15" skipped="0" time="0.157" errors="0">
+<testcase name="Accessibility › homepage should not have accessibility violations" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:11:7 homepage should not have accessibility violations" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:11:7 › Accessibility › homepage should not have accessibility violations 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › navigation should be keyboard accessible" classname="accessibility.spec.ts" time="0.012">
+<failure message="accessibility.spec.ts:26:7 navigation should be keyboard accessible" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:26:7 › Accessibility › navigation should be keyboard accessible 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › all images should have alt text" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:40:7 all images should have alt text" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:40:7 › Accessibility › all images should have alt text ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › form inputs should have labels" classname="accessibility.spec.ts" time="0.012">
+<failure message="accessibility.spec.ts:57:7 form inputs should have labels" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:57:7 › Accessibility › form inputs should have labels ──────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › buttons should have accessible names" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:77:7 buttons should have accessible names" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:77:7 › Accessibility › buttons should have accessible names ────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › color contrast should be sufficient" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:96:7 color contrast should be sufficient" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:96:7 › Accessibility › color contrast should be sufficient ─────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › interactive elements should be focusable" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:109:7 interactive elements should be focusable" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:109:7 › Accessibility › interactive elements should be focusable 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › page should have valid HTML lang attribute" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:129:7 page should have valid HTML lang attribute" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:129:7 › Accessibility › page should have valid HTML lang attribute 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should navigate with Tab key" classname="accessibility.spec.ts" time="0.011">
+<failure message="accessibility.spec.ts:139:7 should navigate with Tab key" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:139:7 › Keyboard Navigation › should navigate with Tab key ─────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should navigate backwards with Shift+Tab" classname="accessibility.spec.ts" time="0.011">
+<failure message="accessibility.spec.ts:153:7 should navigate backwards with Shift+Tab" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:153:7 › Keyboard Navigation › should navigate backwards with Shift+Tab 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should activate links with Enter key" classname="accessibility.spec.ts" time="0.011">
+<failure message="accessibility.spec.ts:167:7 should activate links with Enter key" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:167:7 › Keyboard Navigation › should activate links with Enter key 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should activate buttons with Space key" classname="accessibility.spec.ts" time="0.008">
+<failure message="accessibility.spec.ts:185:7 should activate buttons with Space key" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:185:7 › Keyboard Navigation › should activate buttons with Space key 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Screen Reader Support › should have proper ARIA landmarks" classname="accessibility.spec.ts" time="0.011">
+<failure message="accessibility.spec.ts:207:7 should have proper ARIA landmarks" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:207:7 › Screen Reader Support › should have proper ARIA landmarks 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Screen Reader Support › should have skip links" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:218:7 should have skip links" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:218:7 › Screen Reader Support › should have skip links ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Screen Reader Support › should have proper heading hierarchy" classname="accessibility.spec.ts" time="0.014">
+<failure message="accessibility.spec.ts:232:7 should have proper heading hierarchy" type="FAILURE">
+<![CDATA[  [firefox] › accessibility.spec.ts:232:7 › Screen Reader Support › should have proper heading hierarchy 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="firefox" tests="9" failures="9" skipped="0" time="0.093" errors="0">
+<testcase name="Authentication › should display homepage" classname="auth.spec.ts" time="0.012">
+<failure message="auth.spec.ts:8:7 should display homepage" type="FAILURE">
+<![CDATA[  [firefox] › auth.spec.ts:8:7 › Authentication › should display homepage ──────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should navigate to login page" classname="auth.spec.ts" time="0.011">
+<failure message="auth.spec.ts:12:7 should navigate to login page" type="FAILURE">
+<![CDATA[  [firefox] › auth.spec.ts:12:7 › Authentication › should navigate to login page ───────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should navigate to sign up page" classname="auth.spec.ts" time="0.011">
+<failure message="auth.spec.ts:22:7 should navigate to sign up page" type="FAILURE">
+<![CDATA[  [firefox] › auth.spec.ts:22:7 › Authentication › should navigate to sign up page ─────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should show validation errors on empty login form" classname="auth.spec.ts" time="0.01">
+<failure message="auth.spec.ts:32:7 should show validation errors on empty login form" type="FAILURE">
+<![CDATA[  [firefox] › auth.spec.ts:32:7 › Authentication › should show validation errors on empty login form 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should toggle password visibility" classname="auth.spec.ts" time="0.012">
+<failure message="auth.spec.ts:47:7 should toggle password visibility" type="FAILURE">
+<![CDATA[  [firefox] › auth.spec.ts:47:7 › Authentication › should toggle password visibility ───────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication - Sign Up Flow › should allow user to fill sign up form" classname="auth.spec.ts" time="0.009">
+<failure message="auth.spec.ts:65:7 should allow user to fill sign up form" type="FAILURE">
+<![CDATA[  [firefox] › auth.spec.ts:65:7 › Authentication - Sign Up Flow › should allow user to fill sign up form 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation › should navigate through main menu items" classname="auth.spec.ts" time="0.008">
+<failure message="auth.spec.ts:78:7 should navigate through main menu items" type="FAILURE">
+<![CDATA[  [firefox] › auth.spec.ts:78:7 › Navigation › should navigate through main menu items ─────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation › should toggle language switcher" classname="auth.spec.ts" time="0.011">
+<failure message="auth.spec.ts:89:7 should toggle language switcher" type="FAILURE">
+<![CDATA[  [firefox] › auth.spec.ts:89:7 › Navigation › should toggle language switcher ─────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation › should toggle theme" classname="auth.spec.ts" time="0.009">
+<failure message="auth.spec.ts:105:7 should toggle theme" type="FAILURE">
+<![CDATA[  [firefox] › auth.spec.ts:105:7 › Navigation › should toggle theme ────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="properties.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="firefox" tests="8" failures="8" skipped="0" time="0.098" errors="0">
+<testcase name="Property Browsing › should display property listings" classname="properties.spec.ts" time="0.011">
+<failure message="properties.spec.ts:8:7 should display property listings" type="FAILURE">
+<![CDATA[  [firefox] › properties.spec.ts:8:7 › Property Browsing › should display property listings ────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should allow filtering properties" classname="properties.spec.ts" time="0.011">
+<failure message="properties.spec.ts:30:7 should allow filtering properties" type="FAILURE">
+<![CDATA[  [firefox] › properties.spec.ts:30:7 › Property Browsing › should allow filtering properties ──────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should allow searching properties" classname="properties.spec.ts" time="0.016">
+<failure message="properties.spec.ts:48:7 should allow searching properties" type="FAILURE">
+<![CDATA[  [firefox] › properties.spec.ts:48:7 › Property Browsing › should allow searching properties ──────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should navigate to property details" classname="properties.spec.ts" time="0.012">
+<failure message="properties.spec.ts:66:7 should navigate to property details" type="FAILURE">
+<![CDATA[  [firefox] › properties.spec.ts:66:7 › Property Browsing › should navigate to property details ────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should display property on map" classname="properties.spec.ts" time="0.01">
+<failure message="properties.spec.ts:86:7 should display property on map" type="FAILURE">
+<![CDATA[  [firefox] › properties.spec.ts:86:7 › Property Browsing › should display property on map ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Details › should display property information" classname="properties.spec.ts" time="0.018">
+<failure message="properties.spec.ts:101:7 should display property information" type="FAILURE">
+<![CDATA[  [firefox] › properties.spec.ts:101:7 › Property Details › should display property information ────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Details › should display property images" classname="properties.spec.ts" time="0.01">
+<failure message="properties.spec.ts:129:7 should display property images" type="FAILURE">
+<![CDATA[  [firefox] › properties.spec.ts:129:7 › Property Details › should display property images ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Details › should allow image carousel navigation" classname="properties.spec.ts" time="0.01">
+<failure message="properties.spec.ts:152:7 should allow image carousel navigation" type="FAILURE">
+<![CDATA[  [firefox] › properties.spec.ts:152:7 › Property Details › should allow image carousel navigation ─
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/firefox-1495/firefox/firefox
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="accessibility.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="webkit" tests="15" failures="15" skipped="0" time="0.197" errors="0">
+<testcase name="Accessibility › homepage should not have accessibility violations" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:11:7 homepage should not have accessibility violations" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:11:7 › Accessibility › homepage should not have accessibility violations 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › navigation should be keyboard accessible" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:26:7 navigation should be keyboard accessible" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:26:7 › Accessibility › navigation should be keyboard accessible ─
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › all images should have alt text" classname="accessibility.spec.ts" time="0.012">
+<failure message="accessibility.spec.ts:40:7 all images should have alt text" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:40:7 › Accessibility › all images should have alt text ──────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › form inputs should have labels" classname="accessibility.spec.ts" time="0.013">
+<failure message="accessibility.spec.ts:57:7 form inputs should have labels" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:57:7 › Accessibility › form inputs should have labels ───────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › buttons should have accessible names" classname="accessibility.spec.ts" time="0.014">
+<failure message="accessibility.spec.ts:77:7 buttons should have accessible names" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:77:7 › Accessibility › buttons should have accessible names ─────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › color contrast should be sufficient" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:96:7 color contrast should be sufficient" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:96:7 › Accessibility › color contrast should be sufficient ──────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › interactive elements should be focusable" classname="accessibility.spec.ts" time="0.021">
+<failure message="accessibility.spec.ts:109:7 interactive elements should be focusable" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:109:7 › Accessibility › interactive elements should be focusable 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › page should have valid HTML lang attribute" classname="accessibility.spec.ts" time="0.041">
+<failure message="accessibility.spec.ts:129:7 page should have valid HTML lang attribute" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:129:7 › Accessibility › page should have valid HTML lang attribute 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should navigate with Tab key" classname="accessibility.spec.ts" time="0.013">
+<failure message="accessibility.spec.ts:139:7 should navigate with Tab key" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:139:7 › Keyboard Navigation › should navigate with Tab key ──────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should navigate backwards with Shift+Tab" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:153:7 should navigate backwards with Shift+Tab" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:153:7 › Keyboard Navigation › should navigate backwards with Shift+Tab 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should activate links with Enter key" classname="accessibility.spec.ts" time="0.008">
+<failure message="accessibility.spec.ts:167:7 should activate links with Enter key" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:167:7 › Keyboard Navigation › should activate links with Enter key 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should activate buttons with Space key" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:185:7 should activate buttons with Space key" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:185:7 › Keyboard Navigation › should activate buttons with Space key 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Screen Reader Support › should have proper ARIA landmarks" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:207:7 should have proper ARIA landmarks" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:207:7 › Screen Reader Support › should have proper ARIA landmarks 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Screen Reader Support › should have skip links" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:218:7 should have skip links" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:218:7 › Screen Reader Support › should have skip links ──────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Screen Reader Support › should have proper heading hierarchy" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:232:7 should have proper heading hierarchy" type="FAILURE">
+<![CDATA[  [webkit] › accessibility.spec.ts:232:7 › Screen Reader Support › should have proper heading hierarchy 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="webkit" tests="9" failures="9" skipped="0" time="0.098" errors="0">
+<testcase name="Authentication › should display homepage" classname="auth.spec.ts" time="0.011">
+<failure message="auth.spec.ts:8:7 should display homepage" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:8:7 › Authentication › should display homepage ───────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should navigate to login page" classname="auth.spec.ts" time="0.01">
+<failure message="auth.spec.ts:12:7 should navigate to login page" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:12:7 › Authentication › should navigate to login page ────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should navigate to sign up page" classname="auth.spec.ts" time="0.009">
+<failure message="auth.spec.ts:22:7 should navigate to sign up page" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:22:7 › Authentication › should navigate to sign up page ──────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should show validation errors on empty login form" classname="auth.spec.ts" time="0.009">
+<failure message="auth.spec.ts:32:7 should show validation errors on empty login form" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:32:7 › Authentication › should show validation errors on empty login form 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should toggle password visibility" classname="auth.spec.ts" time="0.009">
+<failure message="auth.spec.ts:47:7 should toggle password visibility" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:47:7 › Authentication › should toggle password visibility ────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication - Sign Up Flow › should allow user to fill sign up form" classname="auth.spec.ts" time="0.009">
+<failure message="auth.spec.ts:65:7 should allow user to fill sign up form" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:65:7 › Authentication - Sign Up Flow › should allow user to fill sign up form 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation › should navigate through main menu items" classname="auth.spec.ts" time="0.011">
+<failure message="auth.spec.ts:78:7 should navigate through main menu items" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:78:7 › Navigation › should navigate through main menu items ──────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation › should toggle language switcher" classname="auth.spec.ts" time="0.016">
+<failure message="auth.spec.ts:89:7 should toggle language switcher" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:89:7 › Navigation › should toggle language switcher ──────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation › should toggle theme" classname="auth.spec.ts" time="0.014">
+<failure message="auth.spec.ts:105:7 should toggle theme" type="FAILURE">
+<![CDATA[  [webkit] › auth.spec.ts:105:7 › Navigation › should toggle theme ─────────────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="properties.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="webkit" tests="8" failures="8" skipped="0" time="0.091" errors="0">
+<testcase name="Property Browsing › should display property listings" classname="properties.spec.ts" time="0.01">
+<failure message="properties.spec.ts:8:7 should display property listings" type="FAILURE">
+<![CDATA[  [webkit] › properties.spec.ts:8:7 › Property Browsing › should display property listings ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should allow filtering properties" classname="properties.spec.ts" time="0.013">
+<failure message="properties.spec.ts:30:7 should allow filtering properties" type="FAILURE">
+<![CDATA[  [webkit] › properties.spec.ts:30:7 › Property Browsing › should allow filtering properties ───────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should allow searching properties" classname="properties.spec.ts" time="0.011">
+<failure message="properties.spec.ts:48:7 should allow searching properties" type="FAILURE">
+<![CDATA[  [webkit] › properties.spec.ts:48:7 › Property Browsing › should allow searching properties ───────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should navigate to property details" classname="properties.spec.ts" time="0.01">
+<failure message="properties.spec.ts:66:7 should navigate to property details" type="FAILURE">
+<![CDATA[  [webkit] › properties.spec.ts:66:7 › Property Browsing › should navigate to property details ─────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should display property on map" classname="properties.spec.ts" time="0.011">
+<failure message="properties.spec.ts:86:7 should display property on map" type="FAILURE">
+<![CDATA[  [webkit] › properties.spec.ts:86:7 › Property Browsing › should display property on map ──────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Details › should display property information" classname="properties.spec.ts" time="0.01">
+<failure message="properties.spec.ts:101:7 should display property information" type="FAILURE">
+<![CDATA[  [webkit] › properties.spec.ts:101:7 › Property Details › should display property information ─────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Details › should display property images" classname="properties.spec.ts" time="0.016">
+<failure message="properties.spec.ts:129:7 should display property images" type="FAILURE">
+<![CDATA[  [webkit] › properties.spec.ts:129:7 › Property Details › should display property images ──────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Details › should allow image carousel navigation" classname="properties.spec.ts" time="0.01">
+<failure message="properties.spec.ts:152:7 should allow image carousel navigation" type="FAILURE">
+<![CDATA[  [webkit] › properties.spec.ts:152:7 › Property Details › should allow image carousel navigation ──
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="accessibility.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="Mobile Chrome" tests="15" failures="2" skipped="0" time="60.498" errors="0">
+<testcase name="Accessibility › homepage should not have accessibility violations" classname="accessibility.spec.ts" time="9.006">
+<failure message="accessibility.spec.ts:11:7 homepage should not have accessibility violations" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › accessibility.spec.ts:11:7 › Accessibility › homepage should not have accessibility violations 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: locator('main')
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('main')
+
+
+      16 |     // Check for main landmarks
+      17 |     const main = page.locator('main');
+    > 18 |     await expect(main).toBeVisible();
+         |                        ^
+      19 |     
+      20 |     // Check for heading hierarchy
+      21 |     const h1 = page.locator('h1');
+        at /home/darkhorse/Documents/real-estate-app/e2e/accessibility.spec.ts:18:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/accessibility-Accessibilit-aeb62-ve-accessibility-violations-Mobile-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/accessibility-Accessibilit-aeb62-ve-accessibility-violations-Mobile-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/accessibility-Accessibilit-aeb62-ve-accessibility-violations-Mobile-Chrome/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|accessibility-Accessibilit-aeb62-ve-accessibility-violations-Mobile-Chrome/test-failed-1.png]]
+
+[[ATTACHMENT|accessibility-Accessibilit-aeb62-ve-accessibility-violations-Mobile-Chrome/video.webm]]
+
+[[ATTACHMENT|accessibility-Accessibilit-aeb62-ve-accessibility-violations-Mobile-Chrome/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Accessibility › navigation should be keyboard accessible" classname="accessibility.spec.ts" time="3.417">
+</testcase>
+<testcase name="Accessibility › all images should have alt text" classname="accessibility.spec.ts" time="4.099">
+</testcase>
+<testcase name="Accessibility › form inputs should have labels" classname="accessibility.spec.ts" time="2.323">
+</testcase>
+<testcase name="Accessibility › buttons should have accessible names" classname="accessibility.spec.ts" time="3.738">
+</testcase>
+<testcase name="Accessibility › color contrast should be sufficient" classname="accessibility.spec.ts" time="3.587">
+</testcase>
+<testcase name="Accessibility › interactive elements should be focusable" classname="accessibility.spec.ts" time="2.763">
+</testcase>
+<testcase name="Accessibility › page should have valid HTML lang attribute" classname="accessibility.spec.ts" time="3.977">
+</testcase>
+<testcase name="Keyboard Navigation › should navigate with Tab key" classname="accessibility.spec.ts" time="2.767">
+</testcase>
+<testcase name="Keyboard Navigation › should navigate backwards with Shift+Tab" classname="accessibility.spec.ts" time="4.152">
+</testcase>
+<testcase name="Keyboard Navigation › should activate links with Enter key" classname="accessibility.spec.ts" time="4.653">
+</testcase>
+<testcase name="Keyboard Navigation › should activate buttons with Space key" classname="accessibility.spec.ts" time="4.488">
+</testcase>
+<testcase name="Screen Reader Support › should have proper ARIA landmarks" classname="accessibility.spec.ts" time="3.733">
+<failure message="accessibility.spec.ts:207:7 should have proper ARIA landmarks" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › accessibility.spec.ts:207:7 › Screen Reader Support › should have proper ARIA landmarks 
+
+    Error: expect(received).toBeGreaterThanOrEqual(expected)
+
+    Expected: >= 1
+    Received:    0
+
+      212 |     const nav = await page.locator('nav, [role="navigation"]').count();
+      213 |     
+    > 214 |     expect(main).toBeGreaterThanOrEqual(1);
+          |                  ^
+      215 |     expect(nav).toBeGreaterThanOrEqual(1);
+      216 |   });
+      217 |
+        at /home/darkhorse/Documents/real-estate-app/e2e/accessibility.spec.ts:214:18
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-Mobile-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-Mobile-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-Mobile-Chrome/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-Mobile-Chrome/test-failed-1.png]]
+
+[[ATTACHMENT|accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-Mobile-Chrome/video.webm]]
+
+[[ATTACHMENT|accessibility-Screen-Reade-d28df--have-proper-ARIA-landmarks-Mobile-Chrome/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Screen Reader Support › should have skip links" classname="accessibility.spec.ts" time="4.018">
+</testcase>
+<testcase name="Screen Reader Support › should have proper heading hierarchy" classname="accessibility.spec.ts" time="3.777">
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="Mobile Chrome" tests="9" failures="3" skipped="0" time="70.016" errors="0">
+<testcase name="Authentication › should display homepage" classname="auth.spec.ts" time="3.58">
+</testcase>
+<testcase name="Authentication › should navigate to login page" classname="auth.spec.ts" time="8.592">
+<failure message="auth.spec.ts:12:7 should navigate to login page" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth.spec.ts:12:7 › Authentication › should navigate to login page ─────────────
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: /login|sign in/i })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByRole('heading', { name: /login|sign in/i })
+
+
+      17 |     // Verify we're on the login page
+      18 |     await expect(page).toHaveURL(/.*login/);
+    > 19 |     await expect(page.getByRole('heading', { name: /login|sign in/i })).toBeVisible();
+         |                                                                         ^
+      20 |   });
+      21 |
+      22 |   test('should navigate to sign up page', async ({ page }) => {
+        at /home/darkhorse/Documents/real-estate-app/e2e/auth.spec.ts:19:73
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-navigate-to-login-page-Mobile-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-navigate-to-login-page-Mobile-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/auth-Authentication-should-navigate-to-login-page-Mobile-Chrome/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-should-navigate-to-login-page-Mobile-Chrome/test-failed-1.png]]
+
+[[ATTACHMENT|auth-Authentication-should-navigate-to-login-page-Mobile-Chrome/video.webm]]
+
+[[ATTACHMENT|auth-Authentication-should-navigate-to-login-page-Mobile-Chrome/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication › should navigate to sign up page" classname="auth.spec.ts" time="34.456">
+<failure message="auth.spec.ts:22:7 should navigate to sign up page" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth.spec.ts:22:7 › Authentication › should navigate to sign up page ───────────
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('link', { name: /sign up|register/i })
+
+
+      23 |     // Look for sign up link
+      24 |     const signUpLink = page.getByRole('link', { name: /sign up|register/i });
+    > 25 |     await signUpLink.click();
+         |                      ^
+      26 |     
+      27 |     // Verify we're on the sign up page
+      28 |     await expect(page).toHaveURL(/.*sign-up/);
+        at /home/darkhorse/Documents/real-estate-app/e2e/auth.spec.ts:25:22
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-navigate-to-sign-up-page-Mobile-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-navigate-to-sign-up-page-Mobile-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/auth-Authentication-should-navigate-to-sign-up-page-Mobile-Chrome/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-should-navigate-to-sign-up-page-Mobile-Chrome/test-failed-1.png]]
+
+[[ATTACHMENT|auth-Authentication-should-navigate-to-sign-up-page-Mobile-Chrome/video.webm]]
+
+[[ATTACHMENT|auth-Authentication-should-navigate-to-sign-up-page-Mobile-Chrome/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication › should show validation errors on empty login form" classname="auth.spec.ts" time="4.006">
+</testcase>
+<testcase name="Authentication › should toggle password visibility" classname="auth.spec.ts" time="8.21">
+<failure message="auth.spec.ts:47:7 should toggle password visibility" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › auth.spec.ts:47:7 › Authentication › should toggle password visibility ─────────
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByLabel(/password/i)
+    Expected: "text"
+    Received: "password"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" with timeout 5000ms
+      - waiting for getByLabel(/password/i)
+        9 × locator resolved to <input value="" required="" id="password" type="password" data-slot="input" class="file:text-foreground placeholder:text-muted-foreground selection:bg-primary selection:text-primary-foreground dark:bg-input/30 border-input h-9 w-full min-w-0 rounded-md border bg-transparent px-3 py-1 text-base shadow-xs transition-[color,box-shadow] outline-none file:inline-flex file:h-7 file:border-0 file:bg-transparent file:text-sm file:font-medium disabled:pointer-events-none disabled:cursor-not-allowed disabled:o…/>
+          - unexpected value "password"
+
+
+      57 |     if (await toggleButton.isVisible()) {
+      58 |       await toggleButton.click();
+    > 59 |       await expect(passwordInput).toHaveAttribute('type', 'text');
+         |                                   ^
+      60 |     }
+      61 |   });
+      62 | });
+        at /home/darkhorse/Documents/real-estate-app/e2e/auth.spec.ts:59:35
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-toggle-password-visibility-Mobile-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/auth-Authentication-should-toggle-password-visibility-Mobile-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/auth-Authentication-should-toggle-password-visibility-Mobile-Chrome/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|auth-Authentication-should-toggle-password-visibility-Mobile-Chrome/test-failed-1.png]]
+
+[[ATTACHMENT|auth-Authentication-should-toggle-password-visibility-Mobile-Chrome/video.webm]]
+
+[[ATTACHMENT|auth-Authentication-should-toggle-password-visibility-Mobile-Chrome/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Authentication - Sign Up Flow › should allow user to fill sign up form" classname="auth.spec.ts" time="1.977">
+</testcase>
+<testcase name="Navigation › should navigate through main menu items" classname="auth.spec.ts" time="2.493">
+</testcase>
+<testcase name="Navigation › should toggle language switcher" classname="auth.spec.ts" time="2.379">
+</testcase>
+<testcase name="Navigation › should toggle theme" classname="auth.spec.ts" time="4.323">
+</testcase>
+</testsuite>
+<testsuite name="properties.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="Mobile Chrome" tests="8" failures="1" skipped="0" time="32.004" errors="0">
+<testcase name="Property Browsing › should display property listings" classname="properties.spec.ts" time="9.722">
+<failure message="properties.spec.ts:8:7 should display property listings" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › properties.spec.ts:8:7 › Property Browsing › should display property listings ──
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText(/no properties|no results/i)
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for getByText(/no properties|no results/i)
+
+
+      22 |       // Check for empty state message
+      23 |       const emptyState = page.getByText(/no properties|no results/i);
+    > 24 |       await expect(emptyState).toBeVisible();
+         |                                ^
+      25 |     } else {
+      26 |       expect(count).toBeGreaterThan(0);
+      27 |     }
+        at /home/darkhorse/Documents/real-estate-app/e2e/properties.spec.ts:24:32
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ../test-results/properties-Property-Browsi-49bd5-d-display-property-listings-Mobile-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ../test-results/properties-Property-Browsi-49bd5-d-display-property-listings-Mobile-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/properties-Property-Browsi-49bd5-d-display-property-listings-Mobile-Chrome/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|properties-Property-Browsi-49bd5-d-display-property-listings-Mobile-Chrome/test-failed-1.png]]
+
+[[ATTACHMENT|properties-Property-Browsi-49bd5-d-display-property-listings-Mobile-Chrome/video.webm]]
+
+[[ATTACHMENT|properties-Property-Browsi-49bd5-d-display-property-listings-Mobile-Chrome/error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Property Browsing › should allow filtering properties" classname="properties.spec.ts" time="1.578">
+</testcase>
+<testcase name="Property Browsing › should allow searching properties" classname="properties.spec.ts" time="1.605">
+</testcase>
+<testcase name="Property Browsing › should navigate to property details" classname="properties.spec.ts" time="3.902">
+</testcase>
+<testcase name="Property Browsing › should display property on map" classname="properties.spec.ts" time="3.929">
+</testcase>
+<testcase name="Property Details › should display property information" classname="properties.spec.ts" time="3.814">
+</testcase>
+<testcase name="Property Details › should display property images" classname="properties.spec.ts" time="3.693">
+</testcase>
+<testcase name="Property Details › should allow image carousel navigation" classname="properties.spec.ts" time="3.761">
+</testcase>
+</testsuite>
+<testsuite name="accessibility.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="Mobile Safari" tests="15" failures="15" skipped="0" time="0.163" errors="0">
+<testcase name="Accessibility › homepage should not have accessibility violations" classname="accessibility.spec.ts" time="0.008">
+<failure message="accessibility.spec.ts:11:7 homepage should not have accessibility violations" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:11:7 › Accessibility › homepage should not have accessibility violations 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › navigation should be keyboard accessible" classname="accessibility.spec.ts" time="0.014">
+<failure message="accessibility.spec.ts:26:7 navigation should be keyboard accessible" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:26:7 › Accessibility › navigation should be keyboard accessible 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › all images should have alt text" classname="accessibility.spec.ts" time="0.012">
+<failure message="accessibility.spec.ts:40:7 all images should have alt text" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:40:7 › Accessibility › all images should have alt text ───
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › form inputs should have labels" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:57:7 form inputs should have labels" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:57:7 › Accessibility › form inputs should have labels ────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › buttons should have accessible names" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:77:7 buttons should have accessible names" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:77:7 › Accessibility › buttons should have accessible names 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › color contrast should be sufficient" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:96:7 color contrast should be sufficient" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:96:7 › Accessibility › color contrast should be sufficient 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › interactive elements should be focusable" classname="accessibility.spec.ts" time="0.008">
+<failure message="accessibility.spec.ts:109:7 interactive elements should be focusable" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:109:7 › Accessibility › interactive elements should be focusable 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Accessibility › page should have valid HTML lang attribute" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:129:7 page should have valid HTML lang attribute" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:129:7 › Accessibility › page should have valid HTML lang attribute 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should navigate with Tab key" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:139:7 should navigate with Tab key" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:139:7 › Keyboard Navigation › should navigate with Tab key 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should navigate backwards with Shift+Tab" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:153:7 should navigate backwards with Shift+Tab" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:153:7 › Keyboard Navigation › should navigate backwards with Shift+Tab 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should activate links with Enter key" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:167:7 should activate links with Enter key" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:167:7 › Keyboard Navigation › should activate links with Enter key 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Keyboard Navigation › should activate buttons with Space key" classname="accessibility.spec.ts" time="0.01">
+<failure message="accessibility.spec.ts:185:7 should activate buttons with Space key" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:185:7 › Keyboard Navigation › should activate buttons with Space key 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Screen Reader Support › should have proper ARIA landmarks" classname="accessibility.spec.ts" time="0.026">
+<failure message="accessibility.spec.ts:207:7 should have proper ARIA landmarks" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:207:7 › Screen Reader Support › should have proper ARIA landmarks 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Screen Reader Support › should have skip links" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:218:7 should have skip links" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:218:7 › Screen Reader Support › should have skip links ───
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Screen Reader Support › should have proper heading hierarchy" classname="accessibility.spec.ts" time="0.009">
+<failure message="accessibility.spec.ts:232:7 should have proper heading hierarchy" type="FAILURE">
+<![CDATA[  [Mobile Safari] › accessibility.spec.ts:232:7 › Screen Reader Support › should have proper heading hierarchy 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="Mobile Safari" tests="9" failures="9" skipped="0" time="0.083" errors="0">
+<testcase name="Authentication › should display homepage" classname="auth.spec.ts" time="0.008">
+<failure message="auth.spec.ts:8:7 should display homepage" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:8:7 › Authentication › should display homepage ────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should navigate to login page" classname="auth.spec.ts" time="0.01">
+<failure message="auth.spec.ts:12:7 should navigate to login page" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:12:7 › Authentication › should navigate to login page ─────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should navigate to sign up page" classname="auth.spec.ts" time="0.01">
+<failure message="auth.spec.ts:22:7 should navigate to sign up page" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:22:7 › Authentication › should navigate to sign up page ───────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should show validation errors on empty login form" classname="auth.spec.ts" time="0.008">
+<failure message="auth.spec.ts:32:7 should show validation errors on empty login form" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:32:7 › Authentication › should show validation errors on empty login form 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication › should toggle password visibility" classname="auth.spec.ts" time="0.009">
+<failure message="auth.spec.ts:47:7 should toggle password visibility" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:47:7 › Authentication › should toggle password visibility ─────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Authentication - Sign Up Flow › should allow user to fill sign up form" classname="auth.spec.ts" time="0.009">
+<failure message="auth.spec.ts:65:7 should allow user to fill sign up form" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:65:7 › Authentication - Sign Up Flow › should allow user to fill sign up form 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation › should navigate through main menu items" classname="auth.spec.ts" time="0.01">
+<failure message="auth.spec.ts:78:7 should navigate through main menu items" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:78:7 › Navigation › should navigate through main menu items ───────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation › should toggle language switcher" classname="auth.spec.ts" time="0.009">
+<failure message="auth.spec.ts:89:7 should toggle language switcher" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:89:7 › Navigation › should toggle language switcher ───────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Navigation › should toggle theme" classname="auth.spec.ts" time="0.01">
+<failure message="auth.spec.ts:105:7 should toggle theme" type="FAILURE">
+<![CDATA[  [Mobile Safari] › auth.spec.ts:105:7 › Navigation › should toggle theme ──────────────────────────
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+<testsuite name="properties.spec.ts" timestamp="2025-10-22T20:00:13.385Z" hostname="Mobile Safari" tests="8" failures="8" skipped="0" time="0.186" errors="0">
+<testcase name="Property Browsing › should display property listings" classname="properties.spec.ts" time="0.011">
+<failure message="properties.spec.ts:8:7 should display property listings" type="FAILURE">
+<![CDATA[  [Mobile Safari] › properties.spec.ts:8:7 › Property Browsing › should display property listings ──
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should allow filtering properties" classname="properties.spec.ts" time="0.011">
+<failure message="properties.spec.ts:30:7 should allow filtering properties" type="FAILURE">
+<![CDATA[  [Mobile Safari] › properties.spec.ts:30:7 › Property Browsing › should allow filtering properties 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should allow searching properties" classname="properties.spec.ts" time="0.009">
+<failure message="properties.spec.ts:48:7 should allow searching properties" type="FAILURE">
+<![CDATA[  [Mobile Safari] › properties.spec.ts:48:7 › Property Browsing › should allow searching properties 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should navigate to property details" classname="properties.spec.ts" time="0.017">
+<failure message="properties.spec.ts:66:7 should navigate to property details" type="FAILURE">
+<![CDATA[  [Mobile Safari] › properties.spec.ts:66:7 › Property Browsing › should navigate to property details 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Browsing › should display property on map" classname="properties.spec.ts" time="0.091">
+<failure message="properties.spec.ts:86:7 should display property on map" type="FAILURE">
+<![CDATA[  [Mobile Safari] › properties.spec.ts:86:7 › Property Browsing › should display property on map ───
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Details › should display property information" classname="properties.spec.ts" time="0.015">
+<failure message="properties.spec.ts:101:7 should display property information" type="FAILURE">
+<![CDATA[  [Mobile Safari] › properties.spec.ts:101:7 › Property Details › should display property information 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Details › should display property images" classname="properties.spec.ts" time="0.017">
+<failure message="properties.spec.ts:129:7 should display property images" type="FAILURE">
+<![CDATA[  [Mobile Safari] › properties.spec.ts:129:7 › Property Details › should display property images ───
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+<testcase name="Property Details › should allow image carousel navigation" classname="properties.spec.ts" time="0.015">
+<failure message="properties.spec.ts:152:7 should allow image carousel navigation" type="FAILURE">
+<![CDATA[  [Mobile Safari] › properties.spec.ts:152:7 › Property Details › should allow image carousel navigation 
+
+    Error: browserType.launch: Executable doesn't exist at /home/darkhorse/.cache/ms-playwright/webkit_ubuntu20.04_x64_special-2092/pw_run.sh
+    ╔═════════════════════════════════════════════════════════════════════════╗
+    ║ Looks like Playwright Test or Playwright was just installed or updated. ║
+    ║ Please run the following command to download new browsers:              ║
+    ║                                                                         ║
+    ║     yarn playwright install                                             ║
+    ║                                                                         ║
+    ║ <3 Playwright Team                                                      ║
+    ╚═════════════════════════════════════════════════════════════════════════╝
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>

@@ -1,0 +1,25 @@
+{
+  "version": 1.1,
+  "atDirectives": [
+    {
+      "name": "@apply",
+      "description": "Use @apply to inline any existing utility classes into your own custom CSS."
+    },
+    {
+      "name": "@layer",
+      "description": "Use @layer to tell Tailwind which bucket a set of custom styles belong to."
+    },
+    {
+      "name": "@theme",
+      "description": "Define theme configuration inline in CSS using @theme."
+    },
+    {
+      "name": "@custom-variant",
+      "description": "Define custom variants for Tailwind CSS v4."
+    },
+    {
+      "name": "@import",
+      "description": "Import other CSS files."
+    }
+  ]
+}
